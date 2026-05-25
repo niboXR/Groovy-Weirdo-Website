@@ -15,6 +15,8 @@ website:
   image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
   open-graph:
+    title: "Groovy Weirdo Art"
+    description: "Groovy Weirdo art portfolio and shop"
     image: "assets/images/groovy-weirdo-logo-360x180.png"
     image-width: 1200
     image-height: 630
