@@ -4,7 +4,7 @@
 
 .navbar-brand-container {
  
-  height: 48px !important;     /* Ensures consistency */
+  height: 72px !important;     /* Ensures consistency */
   width: 224px !important;
   padding: 0 !important;
   
@@ -23,8 +23,8 @@ a.navbar-brand.navbar-brand-logo{
 
 .navbar-logo {
   position: fixed;
-  max-height: 72px !important;
-  height: 72px !important;
+  max-height: 60px !important;
+  height: 60px !important;
 
   padding: 0 !important;
   margin: 0 !important;
