@@ -29,4 +29,5 @@ format:
   html:
     theme: default         # Sets the site's visual style
     css: assets/styles.css      # Links an optional custom CSS file
+    include-in-header: _includes/meta.html
     toc: false            # Adds a Table of Contents to pages
