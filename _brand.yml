@@ -1,11 +1,17 @@
-# logo: "../../Assets/images/logo.svg"
 color:
   palette:
     purple: "#8A5CF5"
+    pink: "#ff9fdf"
     dark-grey: "#222222"
-  primary: purple
+  primary: pink
   background: white 
   foreground: black
+
+logo: 
+  small: assets/images/groovy-weirdo-logo.svg
+  medium: assets/images/groovy-weirdo-logo.svg
+  large: assets/images/groovy-weirdo-logo.svg
+  
 typography:
   fonts:
     - family: Shrikhand

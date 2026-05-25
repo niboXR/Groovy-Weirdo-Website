@@ -10,6 +10,8 @@ website:
   title: "Groovy Weirdo"
   # favicon: 
   navbar:
+    title: false
+    logo: large
     search: false
     left:
       - href: index.qmd   # Home page link
@@ -24,5 +26,5 @@ website:
 format:
   html:
     theme: default         # Sets the site's visual style
-    css: styles.css      # Links an optional custom CSS file
+    css: assets/styles.css      # Links an optional custom CSS file
     toc: false            # Adds a Table of Contents to pages
