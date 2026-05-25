@@ -32,7 +32,7 @@ website:
       - href: portfolio.html   # Portfolio
         text: Portfolio
     right:
-      - href: shop.qmd   # Shop
+      - href: shop.html   # Shop
         text: Shop
 format:
   html:

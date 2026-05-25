@@ -7,6 +7,11 @@ color:
   background: white 
   foreground: black
 
+defaults:
+  bootstrap:
+    defaults:
+      link-color: "$purple"
+      
 logo: 
   small: assets/images/groovy-weirdo-logo.svg
   medium: assets/images/groovy-weirdo-logo.svg
@@ -16,5 +21,7 @@ typography:
   fonts:
     - family: Shrikhand
       source: google
-  base: Shrikhand
+    - family: Arial
+      source: system
+  base: Arial
   headings: Shrikhand
