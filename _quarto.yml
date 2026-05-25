@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs  # GitHub Pages will serve from here
   render: 
-    - homepage.qmd
+    - index.qmd
     - about.qmd
     - portfolio.qmd
     - shop.qmd
@@ -12,7 +12,7 @@ website:
   navbar:
     search: false
     left:
-      - href: homepage.qmd   # Home page link
+      - href: index.qmd   # Home page link
         text: Home
       - href: about.qmd   # About link
         text: About
