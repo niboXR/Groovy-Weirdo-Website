@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: docs  # GitHub Pages will serve from here
+  render: 
+    - homepage.qmd
+    - about.qmd
+    - portfolio.qmd
+    - shop.qmd
+website:
+  title: "Groovy Weirdo"
+  # favicon: 
+  navbar:
+    search: false
+    left:
+      - href: homepage.qmd   # Home page link
+        text: Home
+      - href: about.qmd   # About link
+        text: About
+      - href: portfolio.qmd   # Portfolio
+        text: Portfolio
+    right:
+      - href: shop.qmd   # Shop
+        text: Shop
+format:
+  html:
+    theme: default         # Sets the site's visual style
+    css: styles.css      # Links an optional custom CSS file
+    toc: false            # Adds a Table of Contents to pages

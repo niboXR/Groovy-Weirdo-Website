@@ -1,0 +1,14 @@
+# logo: "../../Assets/images/logo.svg"
+color:
+  palette:
+    purple: "#8A5CF5"
+    dark-grey: "#222222"
+  primary: purple
+  background: white 
+  foreground: black
+typography:
+  fonts:
+    - family: Shrikhand
+      source: google
+  base: Shrikhand
+  headings: Shrikhand
