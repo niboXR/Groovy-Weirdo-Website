@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs  # GitHub Pages will serve from here
+  resources: 
+    - CNAME
   render: 
     - index.qmd
     - about.qmd
@@ -8,7 +10,7 @@ project:
     - shop.qmd
 website:
   title: "Groovy Weirdo"
-  # favicon: 
+  favicon: assets/images/groovy-weirdo-icon.svg
   navbar:
     title: false
     logo: large
