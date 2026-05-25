@@ -14,11 +14,11 @@ website:
     logo: large
     search: false
     left:
-      - href: index.qmd   # Home page link
+      - href: index.html   # Home page link
         text: Home
-      - href: about.qmd   # About link
+      - href: about.html  # About link
         text: About
-      - href: portfolio.qmd   # Portfolio
+      - href: portfolio.html   # Portfolio
         text: Portfolio
     right:
       - href: shop.qmd   # Shop
