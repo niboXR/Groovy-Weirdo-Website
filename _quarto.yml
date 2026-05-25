@@ -9,8 +9,15 @@ project:
     - portfolio.qmd
     - shop.qmd
 website:
-  title: "Groovy Weirdo"
+  site-url: "https://www.groovyweirdo.com"
+  title: "Groovy Weirdo Art"
+  description: "Groovy Weirdo art portfolio and shop"
+  image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
+  open-graph:
+    image: "assets/images/groovy-weirdo-logo-360x180.png"
+    image-width: 1200
+    image-height: 630
   navbar:
     title: false
     logo: large
@@ -29,5 +36,5 @@ format:
   html:
     theme: default         # Sets the site's visual style
     css: assets/styles.css      # Links an optional custom CSS file
-    include-in-header: _includes/meta.html
+    # include-in-header: _includes/meta.html # trying to get a rich text preview
     toc: false            # Adds a Table of Contents to pages
