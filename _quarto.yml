@@ -15,7 +15,7 @@ website:
   image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
   open-graph:
-    title: "Groovy Weirdo Art"
+    title: "Groovy Weirdo Art" #Repeated for open graph seperately due to Quarto bug
     description: "Groovy Weirdo art portfolio and shop"
     image: "assets/images/groovy-weirdo-logo-360x180.png"
     image-width: 1200
@@ -38,5 +38,4 @@ format:
   html:
     theme: default         # Sets the site's visual style
     css: assets/styles.css      # Links an optional custom CSS file
-    # include-in-header: _includes/meta.html # trying to get a rich text preview
     toc: false            # Adds a Table of Contents to pages
