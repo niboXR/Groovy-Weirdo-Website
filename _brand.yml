@@ -1,10 +1,11 @@
 color:
   palette:
     purple: "#8A5CF5"
+    lavender: "#E4DCFA"
     pink: "#ff9fdf"
     dark-grey: "#222222"
   primary: pink
-  background: white 
+  background: lavender 
   foreground: black
 
 defaults:
