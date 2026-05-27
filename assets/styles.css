@@ -31,7 +31,9 @@ a.navbar-brand.navbar-brand-logo{
 
 }
 
-/*Navbar Font*/
+/**********
+Navbar Font
+**********/
 .navbar, .navbar-brand, .nav-link {
   font-family: 'Shrikhand', sans-serif !important;
 }

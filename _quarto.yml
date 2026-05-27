@@ -1,13 +1,9 @@
 project:
   type: website
   output-dir: docs  # GitHub Pages will serve from here
+  pre-render: scripts/get-files.r # get markdown files from collaborative obsidian vault
   resources: 
     - CNAME
-  render: 
-    - index.qmd
-    - about.qmd
-    - portfolio.qmd
-    - shop.qmd
 website:
   site-url: "https://www.groovyweirdo.com"
   title: "Groovy Weirdo Art"
@@ -25,14 +21,14 @@ website:
     logo: large
     search: false
     left:
-      - href: index.html   # Home page link
+      - href: index.md   # Home page link
         text: Home
-      - href: about.html  # About link
+      - href: pages/About.md  # About link
         text: About
-      - href: portfolio.html   # Portfolio
+      - href: pages/Portfolio.md   # Portfolio
         text: Portfolio
     right:
-      - href: shop.html   # Shop
+      - href: pages/Shop.md   # Shop
         text: Shop
 format:
   html:
