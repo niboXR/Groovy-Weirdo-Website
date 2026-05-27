@@ -1,4 +1,6 @@
-## About me
+---
+title: About Me
+---
 
 Kristen Holsworth is an Ypsilanti based artist that uses digital fabrication to create emotional objects. Through 3D printing and laser cutting she is able to make pieces that help her process memories and feeling, making objects that feel like part artifact, part daydream. 
 
