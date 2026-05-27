@@ -27,7 +27,6 @@ website:
         text: About
       - href: pages/portfolio.md   # Portfolio
         text: Portfolio
-    right:
       - href: pages/shop.md   # Shop
         text: Shop
         
