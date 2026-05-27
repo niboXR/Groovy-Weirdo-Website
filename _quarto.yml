@@ -33,7 +33,7 @@ website:
         
   # Define website footer
   page-footer:
-    # background: primary #I dont like the footer background when there isn't alot of content on the page
+    background: primary #I dont like the footer background when there isn't alot of content on the page
     border: false
     left:
       - icon: instagram

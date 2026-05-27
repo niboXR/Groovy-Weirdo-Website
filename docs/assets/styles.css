@@ -37,3 +37,37 @@ Navbar Font
 .navbar, .navbar-brand, .nav-link {
   font-family: 'Shrikhand', sans-serif !important;
 }
+
+
+/************
+Footer height
+*************/
+/* 1. Set a strict height limit and handle any content overflow */
+footer.footer {
+  max-height: 50px !important; /* Adjust this number to your target height */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden !important; /* Prevents text from spilling out */
+}
+
+/* 2. Target Quarto's internal grid structure to align text vertically */
+footer.footer .nav-footer {
+  height: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important; /* Centers the content vertically */
+}
+
+/* 3. Strip out default margins from paragraphs and links inside the footer */
+footer.footer p, 
+footer.footer span, 
+footer.footer a, 
+footer.footer .nav-footer-center,
+footer.footer .nav-footer-left,
+footer.footer .nav-footer-right {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.2 !important; /* Shrinks the text line height */
+}
