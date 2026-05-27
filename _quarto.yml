@@ -30,8 +30,21 @@ website:
     right:
       - href: pages/Shop.md   # Shop
         text: Shop
+        
+  # Define website footer
+  page-footer:
+    # background: primary #I dont like the footer background when there isn't alot of content on the page
+    border: false
+    left:
+      - icon: instagram
+        href: https://www.instagram.com/groovyweirdo_/
+        aria-label: Instagram
+    right: "© 2026 Groovy Weirdo. All rights reserved."
+
+        
 format:
   html:
     theme: default         # Sets the site's visual style
     css: assets/styles.css      # Links an optional custom CSS file
     toc: false            # Adds a Table of Contents to pages
+    page-layout: full
