@@ -23,12 +23,12 @@ website:
     left:
       - href: index.md   # Home page link
         text: Home
-      - href: pages/About.md  # About link
+      - href: pages/about.md  # About link
         text: About
-      - href: pages/Portfolio.md   # Portfolio
+      - href: pages/portfolio.md   # Portfolio
         text: Portfolio
     right:
-      - href: pages/Shop.md   # Shop
+      - href: pages/shop.md   # Shop
         text: Shop
         
   # Define website footer

@@ -37,6 +37,8 @@ if (dir.exists(source_dir)) {
     # Build the matching destination file paths
     dest_files <- file.path(dest_dir, basename(files_to_copy))
     
+    dest_files <- tolower(dest_files)
+    
     # Copy all files at once
     file.copy(from = files_to_copy, to = dest_files, overwrite = TRUE)
     message(paste("Successfully synced", length(files_to_copy), "pages to pages/"))
