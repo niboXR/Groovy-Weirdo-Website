@@ -1,5 +1,5 @@
 ---
-title: My Portfolio
+title: Portfolio
 ---
 
 This is my portfolio page
