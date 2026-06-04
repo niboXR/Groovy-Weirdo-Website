@@ -37,7 +37,7 @@ if (dir.exists(source_dir)) {
     # Build the matching destination file paths
     dest_files <- file.path(dest_dir, basename(files_to_copy))
     
-    dest_files <- tolower(dest_files)
+    dest_files <- gsub(" ", "-", tolower(dest_files))
     
     # Copy all files at once
     file.copy(from = files_to_copy, to = dest_files, overwrite = TRUE)
@@ -50,6 +50,35 @@ if (dir.exists(source_dir)) {
   stop("Error: Source directory '../../Pages' not found.")
 }
 
+# Replace dynamic metadata from Obsidian {{property}} with format for quarto {{< meta property >}} 
+for (file_path in dest_files) {
+  # 1. Read the file contents line by line
+  file_contents <- readLines(file_path, warn = FALSE)
+  
+  # 2. Match dynamic text inside {{}} and replace with {{< meta property >}}
+  # \\1 represents the exact text captured inside the ([A-Za-z0-9_-]+) group
+  modified_contents <- gsub(
+    pattern = "\\{\\{([A-Za-z0-9_-]+)\\}\\}", 
+    replacement = "\\{\\{< meta \\1 >\\}\\}", 
+    x = file_contents
+  )
+  
+  # 3. Write the changes back to the original file
+  writeLines(modified_contents, file_path)
+}
 ##########################################
 # Get assets? (come back to when needed) #
 ##########################################
+
+# Images
+source_dir <- "../../Assets/images"
+dest_dir   <- "assets/images"
+
+files_to_copy <- list.files(path = source_dir, full.names = TRUE)
+dest_files <- file.path(dest_dir, basename(files_to_copy))
+file.copy(from = files_to_copy, to = dest_files, overwrite = TRUE)
+
+
+
+
+
