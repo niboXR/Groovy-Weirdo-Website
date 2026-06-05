@@ -13,6 +13,6 @@ buy-button:
 
 {{< meta description >}}
 
-{{< include ../_includes/buy-button-groovy-weirdo-sticker.html >}}
-
 {{< include ../_includes/add-button-groovy-weirdo-sticker.html >}}
+
+{{< include ../_includes/buy-button-groovy-weirdo-sticker.html >}}
