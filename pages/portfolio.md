@@ -2,7 +2,7 @@
 title: Portfolio
 ---
 
-Welcome to my portfolio page. I hope you find joy in my creations :purple_heart:
+Welcome to my portfolio page. I hope you find joy in my creations :purple_heart: 
 
 ![](../assets/images/the-art-of-leaving-4.jpg){fig-alt="The Art of Leaving Image 4" width="75%" fig-align="center"}
 
