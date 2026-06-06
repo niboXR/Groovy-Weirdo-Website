@@ -71,3 +71,83 @@ footer.footer .nav-footer-right {
   margin-bottom: 0 !important;
   line-height: 1.2 !important; /* Shrinks the text line height */
 }
+
+
+/***********************
+*Aurora Borealis Layout*
+***********************/
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* The Grid System */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        /* Individual image wrapper items */
+        .grid-item {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Makes the large portrait image take up two rows vertically */
+        .item-hero {
+            grid-row: span 2;
+        }
+
+        /* Ensure images scale perfectly without losing their aspect ratio */
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Change to 'contain' if you absolute forbid minor cropping */
+            display: block;
+        }
+
+        /* Responsive design for tablets and mobile phones */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Stacks them in a clean single column on mobile */
+            }
+            .item-hero {
+                grid-row: auto;
+            }
+        }
+        
+/**********************
+*Hot pink table layout*
+***********************/
+/* Base styles for desktop screens */
+.image-gallery {
+  display: flex;
+  gap: 20px; /* Space between the images */
+  align-items: center; /* Aligns them in the middle vertically */
+  height: 500px; /* Equal height on desktop */
+}
+
+.image-gallery img {
+  flex: 1; /* Forces both images to share the horizontal width equally */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents squishing, keeps aspect ratio clean */
+  border-radius: 8px;
+}
+
+/* Responsive styles for mobile screens (under 768px wide) */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column; /* Stacks images vertically */
+    height: auto; /* Removes the fixed desktop height restriction */
+    gap: 16px; /* Slightly tighter gap for mobile screens */
+  }
+
+  .image-gallery img {
+    height: auto; /* Allows images to find their natural heights */
+    aspect-ratio: auto; /* Ensures no cropping occurs on mobile */
+  }
+}
