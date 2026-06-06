@@ -20,11 +20,12 @@ Welcome to my portfolio page. I hope you find joy in my creations :purple_heart:
 <br>
 <div style="line-height: 1.0;">
 
-*Aurora Borealis*
+*Somewhere Other than Here*
 
 **2023**
 
-Laser Cut Acrylic and Wood
+Laser Cut Acrylic and PLA
+
 </div>
 
 ---
