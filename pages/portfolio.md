@@ -6,6 +6,29 @@ Welcome to my portfolio page. I hope you find joy in my creations :purple_heart:
 
 ---
 
+<div class="portfolio-container"> 
+<div class="portfolio-grid"> 
+<!-- 1. Large Hero Portrait (3024x4032) --> 
+<div class="grid-item item-hero"> <img src="../assets/images/somewhere-other-than-here-1.webp" alt="Somewhere Other Than Here image 1" loading="lazy"> </div>
+<!-- 2. Landscape Image (1440x962) --> 
+<div class="grid-item"> <img src="../assets/images/somewhere-other-than-here-2.webp" alt="Somewhere Other Than Here image 2" loading="lazy"> </div> 
+<!-- 3. Medium Portrait Image (1777x2809) --> 
+<div class="grid-item"> <img src="../assets/images/somewhere-other-than-here-3.webp" alt="Somewhere Other Than Here image 3" loading="lazy"> </div> 
+</div> 
+</div>
+
+<br>
+<div style="line-height: 1.0;">
+
+*Aurora Borealis*
+
+**2023**
+
+Laser Cut Acrylic and Wood
+</div>
+
+---
+
 <div class="image-gallery"> <img src="../assets/images/hot-pink-table-2.webp" alt="Hot Pink Table image 2"> <img src="../assets/images/hot-pink-table-1.webp" alt="Second image"> </div>
 
 <br>
@@ -69,5 +92,20 @@ Laser Cut Acrylic and Wood
 
 **2023**
 
-3D Filament and Wood
 </div>
+
+---
+
+<div class="image-gallery"> <img src="../assets/images/nights-like-these-1.webp" alt="Nights Like These image 1" loading="lazy"> <img src="../assets/images/nights-like-these-2.webp" alt="Nights Like These image 2" loading="lazy"> <img src="../assets/images/nights-like-these-3.webp" alt="Nights Like These image 3" loading="lazy"> </div>
+
+<br>
+<div style="line-height: 1.0;">
+
+*Nights Like These*
+
+**2023**
+
+</div>
+
+---
+
