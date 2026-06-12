@@ -19,6 +19,7 @@ website:
   navbar:
     title: false
     logo: large
+    logo-alt: "Groovy Weirdo logo linked to home page"
     search: false
     left:
       - href: index.md   # Home page link
