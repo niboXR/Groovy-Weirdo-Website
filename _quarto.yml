@@ -46,7 +46,9 @@ website:
         
 format:
   html:
-    theme: default         # Sets the site's visual style
+    theme:
+      - default
+      - custom.scss           # Injected on top of the brand layer
     css: assets/styles.css      # Links an optional custom CSS file
     toc: false            # Adds a Table of Contents to pages
     page-layout: full

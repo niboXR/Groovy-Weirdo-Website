@@ -1,18 +1,18 @@
 color:
   palette:
-    purple: "#8A5CF5"
-    lavender: "#E4DCFA"
+    purple: "#8A5CF5" #primary brand color
+    dark-purple: "#4B219E" #unused
+    indigo: "#2A0876" #link color
+    lavender: "#E4DCFA" #background
     pink: "#ff9fdf"
     dark-grey: "#222222"
   primary: pink
   background: lavender 
   foreground: black
 
-defaults:
-  bootstrap:
-    defaults:
-      link-color: "$purple"
-      
+  
+
+
 logo: 
   small: assets/images/groovy-weirdo-logo.svg
   medium: assets/images/groovy-weirdo-logo.svg

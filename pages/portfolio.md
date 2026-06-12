@@ -22,7 +22,7 @@ Welcome to my portfolio page. I hope you find joy in my creations :purple_heart:
 
 *Somewhere Other than Here*
 
-**2023**
+**2025**
 
 Laser Cut Acrylic and PLA
 
