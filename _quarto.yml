@@ -24,12 +24,17 @@ website:
     left:
       - href: index.md   # Home page link
         text: Home
+        aria-label: "Home"
       - href: pages/about.md  # About link
         text: About
+        aria-label: "About"
       - href: pages/portfolio.md   # Portfolio
         text: Portfolio
+        aria-label: "Portfolio"
       - href: pages/shop.md   # Shop
         text: Shop
+        aria-label: "Shop"
+
         
   # Define website footer
   page-footer:
