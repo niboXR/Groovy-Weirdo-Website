@@ -2,3 +2,9 @@
 // These override body inline links only, bypassing header/footer structural definitions
 $link-color: #2A0876;        // Standard link color
 $link-hover-color: #4B219E;  // Link hover color
+
+
+// Adding space between letters of headings (Shrikhand)
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.1em; /*adjust letter spacing*/
+}
