@@ -60,5 +60,5 @@ format:
     page-layout: full
     from: markdown+emoji
     axe: 
-      output: document
+      output: console #shows in console, use 'document' to show on page on 'quarto preview'
       
