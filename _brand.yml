@@ -1,14 +1,27 @@
 color:
   palette:
-    purple: "#8A5CF5" #primary brand color
-    dark-purple: "#4B219E" #unused
-    indigo: "#2A0876" #link color
-    lavender: "#E4DCFA" #background
-    pink: "#ff9fdf"
-    dark-grey: "#222222"
-  primary: pink
+  
+    #light colors
+    purple: "#A278FF" #primary brand color - logo color 
+    logo-pink: "#EF60b9" #logo pink
+    blue: "#67def9" #the icon color
+    
+    
+    #dark colors
+    dark-purple: "#201833" # 70% shade of purple
+    magenta: "#8f3a6f" # 40% shade of pink
+    dark-magenta: "#60264a" #60% shade of pink
+    
+    indigo: "#2A0876" #a dark color used for text
+
+    
+    #background colors
+    lavender: "#d4cee4" #background (80% tint of indigo)
+  
+  # Default color settings
+  primary: indigo
   background: lavender 
-  foreground: black
+  foreground: indigo
 
   
 

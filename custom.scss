@@ -1,7 +1,24 @@
 /*-- scss:defaults --*/
-// These override body inline links only, bypassing header/footer structural definitions
-$link-color: #2A0876;        // Standard link color
-$link-hover-color: #4B219E;  // Link hover color
+
+//header
+//$navbar-bg: $brand-indigo; //background, currently redundant
+//$navbar-fg: $brand-lavender; //foreground, currently redundant
+
+$navbar-hl: $brand-purple;
+
+
+// footer
+//$footer-bg: $brand-indigo; //background, currently redundant
+$footer-fg: $brand-lavender; //foreground
+$footer-hl: $brand-purple;
+
+
+// body
+
+/// links
+$link-color: $brand-magenta;        // Standard link color
+$link-hover-color: $brand-dark-magenta;  // Link hover color
+
 
 
 // Adding space between letters of headings (Shrikhand)

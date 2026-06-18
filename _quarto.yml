@@ -5,8 +5,8 @@ project:
   resources: 
     - CNAME
 website:
-  site-url: "https://www.groovyweirdo.com"
   title: "Groovy Weirdo Art"
+  site-url: "https://www.groovyweirdo.com"
   description: "Groovy Weirdo art portfolio and shop"
   image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
@@ -38,7 +38,7 @@ website:
         
   # Define website footer
   page-footer:
-    background: primary #I dont like the footer background when there isn't alot of content on the page
+    background: primary
     border: false
     left:
       - icon: instagram
@@ -52,10 +52,11 @@ website:
         
 format:
   html:
-    theme:
-      - default
-      - custom.scss           # Injected on top of the brand layer
-    css: assets/styles.css      # Links an optional custom CSS file
+    theme: [custom.scss, brand]
+      # - none # No bootswatch themeing
+      # - _brand.yml
+      # - custom.scss           # Injected on top of the brand layer
+    css: assets/styles.css      # custom CSS injected client-side
     toc: false            # Adds a Table of Contents to pages
     page-layout: full
     from: markdown+emoji
