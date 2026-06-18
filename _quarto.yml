@@ -10,6 +10,13 @@ website:
   description: "Groovy Weirdo art portfolio and shop"
   image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
+  announcement: 
+    icon: cone-striped
+    dismissable: true
+    content: "This website is under active development. Report an issue [here](https://github.com/niboXR/Groovy-Weirdo-Website/issues)."
+    position: below-navbar
+    type: light #options include primary, secondary, success, danger, warning, info, light, dark
+    
   open-graph:
     title: "Groovy Weirdo Art" #Repeated for open graph seperately due to Quarto bug
     description: "Groovy Weirdo art portfolio and shop"

@@ -1,27 +1,48 @@
 /*-- scss:defaults --*/
 
-//header
+////////////
+//NAVBAR //
+//////////
+
 //$navbar-bg: $brand-indigo; //background, currently redundant
 //$navbar-fg: $brand-lavender; //foreground, currently redundant
 
 $navbar-hl: $brand-purple;
 
+///////////////////
+// ANNOUNCEMENT //
+/////////////////
 
-// footer
+.quarto-announcement-bar {
+  //background-color: #4a90e2 !important; /* Your custom background hex code */
+}
+
+.quarto-announcement-content, 
+.quarto-announcement-bar .bi {
+  //color: #ffffff !important; /* Your custom text and icon hex code */
+}
+
+/////////////
+// FOOTER //
+///////////
+
 //$footer-bg: $brand-indigo; //background, currently redundant
 $footer-fg: $brand-lavender; //foreground
 $footer-hl: $brand-purple;
 
-
-// body
+///////////
+// BODY //
+/////////
 
 /// links
 $link-color: $brand-magenta;        // Standard link color
 $link-hover-color: $brand-dark-magenta;  // Link hover color
 
 
+///////////////
+// HEADINGS //
+/////////////
 
-// Adding space between letters of headings (Shrikhand)
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em; /*adjust letter spacing*/
 }
