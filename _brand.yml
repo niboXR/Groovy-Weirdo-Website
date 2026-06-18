@@ -20,6 +20,7 @@ color:
   
   # Default color settings
   primary: indigo
+  secondary: blue
   background: lavender 
   foreground: indigo
 

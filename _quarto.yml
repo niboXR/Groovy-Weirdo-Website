@@ -15,7 +15,7 @@ website:
     dismissable: true
     content: "This site is in development. [Report an issue](https://github.com/niboXR/Groovy-Weirdo-Website/issues)."
     position: below-navbar
-    type: light #options include primary, secondary, success, danger, warning, info, light, dark
+    type: secondary #options include primary, secondary, success, danger, warning, info, light, dark
     
   open-graph:
     title: "Groovy Weirdo Art" #Repeated for open graph seperately due to Quarto bug

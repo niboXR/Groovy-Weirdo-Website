@@ -5,30 +5,32 @@
 //////////
 
 //$navbar-bg: $brand-indigo; //background, currently redundant
-//$navbar-fg: $brand-lavender; //foreground, currently redundant
+$navbar-fg: $brand-purple; //foreground, currently redundant
 
-$navbar-hl: $brand-purple;
+$navbar-hl: $brand-blue;
 
 ///////////////////
 // ANNOUNCEMENT //
 /////////////////
 
-.quarto-announcement-bar {
-  //background-color: #4a90e2 !important; /* Your custom background hex code */
-}
 
 .quarto-announcement-content, 
-.quarto-announcement-bar .bi {
-  //color: #ffffff !important; /* Your custom text and icon hex code */
+.quarto-announcement-bar {
+  color: $brand-indigo !important; /* Your custom text and icon hex code */
 }
 
+#quarto-announcement {
+  .bi {
+    color: $brand-purple !important;
+  }
+  
+}
 /////////////
 // FOOTER //
 ///////////
 
 //$footer-bg: $brand-indigo; //background, currently redundant
-$footer-fg: $brand-lavender; //foreground
-$footer-hl: $brand-purple;
+$footer-fg: $brand-blue; //foreground
 
 ///////////
 // BODY //
