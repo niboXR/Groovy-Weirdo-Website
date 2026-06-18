@@ -13,7 +13,7 @@ website:
   announcement: 
     icon: cone-striped
     dismissable: true
-    content: "This website is under active development. Report an issue [here](https://github.com/niboXR/Groovy-Weirdo-Website/issues)."
+    content: "This site is in development. [Report an issue](https://github.com/niboXR/Groovy-Weirdo-Website/issues)."
     position: below-navbar
     type: light #options include primary, secondary, success, danger, warning, info, light, dark
     
