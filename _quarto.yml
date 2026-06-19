@@ -1,7 +1,11 @@
 project:
   type: website
   output-dir: docs  # GitHub Pages will serve from here
-  pre-render: scripts/get-files.r # get markdown files from collaborative obsidian vault
+  pre-render:
+    - scripts/get-products.R # pull products using shopify API
+    - scripts/get-files.R # get markdown files from collaborative obsidian vault
+  post-render: 
+    - scripts/cleanup.R #cleanup redundant files from prerender
   resources: 
     - CNAME
 website:

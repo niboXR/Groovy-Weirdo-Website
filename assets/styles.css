@@ -151,3 +151,11 @@ footer.footer .nav-footer-right {
     aspect-ratio: auto; /* Ensures no cropping occurs on mobile */
   }
 }
+
+
+
+/* Hide all figure captions across the site */
+.figure-caption, 
+figcaption {
+  display: none !important;
+}

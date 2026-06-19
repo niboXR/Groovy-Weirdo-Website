@@ -1,38 +1,31 @@
 [
   {
+    "objectID": "shop/virtual-pet-sticker.html",
+    "href": "shop/virtual-pet-sticker.html",
+    "title": "Virtual Pet Sticker",
+    "section": "",
+    "text": "Virtual Pet Sticker\n\n\n$3.99\n\nInspired by the virtual pets of my childhood\n\n\n\n\n\n\n\n\n\n\nReviews\nThis product does not have any reviews yet. Come back later to see reviews from verified buyers."
+  },
+  {
+    "objectID": "shop/groovy-weirdo-sticker.html",
+    "href": "shop/groovy-weirdo-sticker.html",
+    "title": "Groovy Weirdo Sticker",
+    "section": "",
+    "text": "Groovy Weirdo Sticker\n\n\n$3.99\n\nThis sticker proves you were among the first supporters of our store\n\n\n\n\n\n\n\n\n\n\nReviews\nThis product does not have any reviews yet. Come back later to see reviews from verified buyers."
+  },
+  {
     "objectID": "pages/shop.html",
     "href": "pages/shop.html",
     "title": "Welcome to my shop!",
     "section": "",
-    "text": "You can get our very first sticker here. Come back often to see what is new."
+    "text": "You can get our very first batch of sticker here.\nCome back often to see what is new."
   },
   {
-    "objectID": "pages/shop.html#all-stickers",
-    "href": "pages/shop.html#all-stickers",
+    "objectID": "pages/shop.html#stickers",
+    "href": "pages/shop.html#stickers",
     "title": "Welcome to my shop!",
-    "section": "All Stickers",
-    "text": "All Stickers"
-  },
-  {
-    "objectID": "pages/groovy-weirdo-sticker.html",
-    "href": "pages/groovy-weirdo-sticker.html",
-    "title": "Groovy Weirdo Art",
-    "section": "",
-    "text": "$3.99\nThis sticker proves you were among the first supporters of our store"
-  },
-  {
-    "objectID": "pages/groovy-weirdo-sticker.html#section",
-    "href": "pages/groovy-weirdo-sticker.html#section",
-    "title": "Groovy Weirdo Art",
-    "section": "",
-    "text": "$3.99\nThis sticker proves you were among the first supporters of our store"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to Groovy Weirdo!",
-    "section": "",
-    "text": "My website for sharing my weird art and selling trinkets to fund more weird art.\nVisit the shop to get in on the first batch of stickers."
+    "section": "Stickers",
+    "text": "Stickers"
   },
   {
     "objectID": "pages/about.html",
@@ -42,10 +35,31 @@
     "text": "Kristen Holsworth is an Ypsilanti based artist that uses digital fabrication to create emotional objects. Through 3D printing and laser cutting she is able to make pieces that help her process memories and feeling, making objects that feel like part artifact, part daydream. \n\n\n\nKristen on the campus print farm\n\n\nRaised in the glow of early 2000s cartoons, clunky computers, sticker bombed CD players, and the hand me down influence of the 90s she works to preserve the nostalgia of growing up in a plastic, playful, awkward, and oddly tender world."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to Groovy Weirdo!",
+    "section": "",
+    "text": "My website for sharing my weird art and selling trinkets to fund more weird art. Visit the shop to see our first batch of stickers or get our very first sticker below."
+  },
+  {
     "objectID": "pages/portfolio.html",
     "href": "pages/portfolio.html",
     "title": "Portfolio",
     "section": "",
     "text": "Welcome to my portfolio page. I hope you find joy in my creations 💜\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSomewhere Other than Here\n2025\nLaser Cut Acrylic and PLA\n\n\n\n \n\n\n\nHot Pink Table\n2024\nLaser Cut Acrylic and Wood\n\n\n\n\n  \n\n\n\nThe Art of Leaving\n2023\nLaser Cut Paper and PLA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAurora Borealis\n2023\nLaser Cut Acrylic and Wood\n\n\n\n \n\n\n\nHer\n2023\n\n\n\n  \n\n\n\nNights Like These\n2023"
+  },
+  {
+    "objectID": "shop/flip-phone-sticker.html",
+    "href": "shop/flip-phone-sticker.html",
+    "title": "Flip Phone Sticker",
+    "section": "",
+    "text": "Flip Phone Sticker\n\n\n$3.99\n\nThis sticker was inspired by Text Messages I Never Sent\n\n\n\n\n\n\n\n\n\n\nReviews\nThis product does not have any reviews yet. Come back later to see reviews from verified buyers."
+  },
+  {
+    "objectID": "shop/lava-lamp-sticker.html",
+    "href": "shop/lava-lamp-sticker.html",
+    "title": "Lava Lamp Sticker",
+    "section": "",
+    "text": "Lava Lamp Sticker\n\n\n$3.99\n\nInspired by my love of lava lamps.\n\n\n\n\n\n\n\n\n\n\nReviews\nThis product does not have any reviews yet. Come back later to see reviews from verified buyers."
   }
 ]
