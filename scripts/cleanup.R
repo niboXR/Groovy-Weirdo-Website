@@ -3,15 +3,17 @@
 #########################################
 
 # 1. Define the targets for deletion
-file_to_delete  <- "index.md"
-folders_to_clear <- c("pages", "shop")
+files_to_delete  <- c("index.md", "about.md", "portfolio.md", "shop.md")
+folders_to_clear <- c("shop")
 
-# 2. Delete the individual file
-if (file.exists(file_to_delete)) {
-  file.remove(file_to_delete)
-  message("Successfully deleted: ", file_to_delete)
-} else {
-  message("File not found (already deleted): ", file_to_delete)
+# 2. Delete the individual files
+for (file in files_to_delete) {
+  if (file.exists(file)) {
+    file.remove(file)
+    message("Successfully deleted: ", file)
+    } else {
+    message("File not found (already deleted): ", file)
+  }
 }
 
 # 3. Delete everything inside the specified folders

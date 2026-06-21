@@ -7,6 +7,7 @@ library(dplyr)
 library(purrr)
 library(stringr)
 library(readr)
+library(glue)
 
 # Setup
 shop_url <- "groovyweirdo.myshopify.com"
@@ -60,14 +61,19 @@ shopify_products <- shopify_products$products
 #get clean data for pages
 products <- shopify_products %>%
   filter(status == "active") %>% 
-  rename(desc = body_html) %>%
+  rename(
+    desc = body_html,
+    date = published_at
+    ) %>%
   mutate(
     id = format(id, scientific = FALSE),
     variant_count = sapply(shopify_products$variants, nrow),
     price = sapply(shopify_products$variants, function(df) df$price[1]),
-    image = paste0("![",title,"](",image$src,")")
+    image = paste0("![",title,"](",image$src,")"),
+    image_link = sapply(images, function(df) df$src[1]) # ! object of type closure is not subsettable
   ) %>%
-  select(id, product_type, title, handle, desc, price, image)
+  select(id, product_type, title, date, handle, desc, price, image, image_link)
+
 
 
 ##################################
@@ -81,10 +87,10 @@ generate_shopify_buttons <- function(id, handle) {
   #add button
   add_button_html <- paste(readLines("_includes/add-button.html", warn = FALSE), collapse = "\n")
   
-  updated_add_button_html <- gsub(pattern = '8253393141826', 
-                                  replacement = id, 
-                                  x = add_button_html, 
-                                  fixed = TRUE)
+  updated_add_button_html <- add_button_html %>% 
+    gsub(pattern = '8253393141826', replacement = id, x = ., fixed = TRUE) %>% #replace product id
+    gsub(pattern = '1780618864944', replacement = handle, x = ., fixed = TRUE) #replace component id
+
   
   new_filepath <- paste0("_includes/add-button-", handle, ".html")
   writeLines(updated_add_button_html, new_filepath)
@@ -92,10 +98,10 @@ generate_shopify_buttons <- function(id, handle) {
   #buy buttons
   buy_button_html <- paste(readLines("_includes/buy-button.html", warn = FALSE), collapse = "\n")
   
-  updated_buy_button_html <- gsub(pattern = '8253393141826', 
-                                  replacement = id, 
-                                  x = buy_button_html, 
-                                  fixed = TRUE)
+  updated_buy_button_html <- buy_button_html %>%
+    gsub(pattern = '8253393141826', replacement = id, x = ., fixed = TRUE) %>% #replace product id
+    gsub(pattern = '1780618864944', replacement = handle, x = ., fixed = TRUE) #replace component id
+                                  
   
   new_filepath <- paste0("_includes/buy-button-", handle, ".html")
   writeLines(updated_buy_button_html, new_filepath)
@@ -122,8 +128,12 @@ if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
 
 # write function
 
-write_product_markdown <- function(id, handle, title, desc, price, image) {
+write_product_markdown <- function(id, handle, title, product_type, date, desc, price, image, image_link) {
   filepath <- file.path(output_dir, paste0(handle, ".md"))
+  
+  # add_button_html <- paste(readLines("_includes/add-button.html", warn = FALSE), collapse = "\n")
+  add_button_html <- read_file(glue("_includes/add-button-{handle}.html"))
+  indented_button <- paste0("  ", gsub("\n", "\n  ", add_button_html))
   
   # Inject variables using str_glue. 
   # Backslashes escape quotes for valid YAML syntax inside the front matter.
@@ -132,14 +142,18 @@ write_product_markdown <- function(id, handle, title, desc, price, image) {
 id: {id}
 handle: {handle}
 title: "{title}"
-price: {price}
+price: "${price}"
+categories: "{product_type}"
 desc: "{desc}"
-image: "{image}"
+image: "{image_link}"
+sort-date: "{date}"
+add-button: |
+{indented_button}
 ---
 
 {image}
 
-**${price}**
+**{price}**
 
 {desc}
 
@@ -166,7 +180,10 @@ pwalk(
     title = products$title,
     price = products$price,
     desc = products$desc,
-    image = products$image
+    image = products$image,
+    image_link = products$image_link,
+    date = products$date,
+    product_type = products$product_type
   ),
   write_product_markdown
 )

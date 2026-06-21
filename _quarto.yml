@@ -4,8 +4,8 @@ project:
   pre-render:
     - scripts/get-products.R # pull products using shopify API
     - scripts/get-files.R # get markdown files from collaborative obsidian vault
-  post-render: 
-    - scripts/cleanup.R #cleanup redundant files from prerender
+  post-render:
+  - scripts/cleanup.R #cleanup redundant files from prerender
   resources: 
     - CNAME
 website:
@@ -36,13 +36,13 @@ website:
       - href: index.md   # Home page link
         text: Home
         aria-label: "Home"
-      - href: pages/about.md  # About link
+      - href: about.md  # About link
         text: About
         aria-label: "About"
-      - href: pages/portfolio.md   # Portfolio
+      - href: portfolio.md   # Portfolio
         text: Portfolio
         aria-label: "Portfolio"
-      - href: pages/shop.md   # Shop
+      - href: shop.md   # Shop
         text: Shop
         aria-label: "Shop"
 

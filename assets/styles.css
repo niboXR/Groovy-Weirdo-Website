@@ -159,3 +159,9 @@ footer.footer .nav-footer-right {
 figcaption {
   display: none !important;
 }
+
+
+/* Hide the names/labels of fields in the grid cards */
+table.card-other-values tr td:first-child {
+  display: none;
+}

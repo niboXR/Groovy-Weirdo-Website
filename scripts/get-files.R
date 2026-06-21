@@ -18,14 +18,8 @@ if (file.exists(source_file)) {
 # PAGES #
 #########
 
-# Define directory paths
+# Define source directory path
 source_dir <- "../../Pages"
-dest_dir   <- "pages"
-
-# 1. Create local pages directory if it does not exist
-if (!dir.exists(dest_dir)) {
-  dir.create(dest_dir, recursive = TRUE)
-}
 
 # 2. Verify source directory exists, then copy files
 if (dir.exists(source_dir)) {
@@ -35,13 +29,13 @@ if (dir.exists(source_dir)) {
   
   if (length(files_to_copy) > 0) {
     # Build the matching destination file paths
-    dest_files <- file.path(dest_dir, basename(files_to_copy))
+    dest_files <- file.path(basename(files_to_copy))
     
     dest_files <- gsub(" ", "-", tolower(dest_files))
     
     # Copy all files at once
     file.copy(from = files_to_copy, to = dest_files, overwrite = TRUE)
-    message(paste("Successfully synced", length(files_to_copy), "pages to pages/"))
+    message(paste("Successfully synced", length(files_to_copy), "pages"))
   } else {
     message("No .md files found in the source Pages directory.")
   }
