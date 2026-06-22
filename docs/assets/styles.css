@@ -170,3 +170,8 @@ table.card-other-values tr td:first-child {
 div.quarto-categories {
   display: none !important;
 }
+
+/*Hide title on product pages*/
+#title-block-header {
+  display: none;
+}

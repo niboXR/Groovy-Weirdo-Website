@@ -141,6 +141,7 @@ write_product_markdown <- function(id, handle, title, product_type, date, desc, 
 ---
 id: {id}
 handle: {handle}
+title-block-style: none
 title: "{title}"
 price: "${price}"
 categories: "{product_type}"
@@ -153,6 +154,7 @@ add-button: |
 
 {image}{{.align-left style="max-width: 600px; width: 100%;"}}
 
+# {title}
 **{price}**
 
 {desc}
@@ -164,6 +166,10 @@ add-button: |
 # Reviews
 
 This product does not have any reviews yet. Come back later to see reviews from verified buyers. 
+
+---
+
+[Back to shop](../shop.html)
 
 ')
 
