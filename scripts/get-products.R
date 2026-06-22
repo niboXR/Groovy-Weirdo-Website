@@ -157,7 +157,7 @@ add-button: |
 {image}{{.align-left style="max-width: 600px; width: 100%;"}}
 
 # {title}
-**{price}**
+**${price}**
 
 {desc}
 
