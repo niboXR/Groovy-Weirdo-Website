@@ -148,6 +148,8 @@ categories: "{product_type}"
 desc: "{desc}"
 image: "{image_link}"
 sort-date: "{date}"
+header-includes: |
+  <style>#title-block-header {{ display: none; }}</style>
 add-button: |
 {indented_button}
 ---
@@ -170,6 +172,7 @@ This product does not have any reviews yet. Come back later to see reviews from 
 ---
 
 [Back to shop](../shop.html)
+
 
 ')
 
