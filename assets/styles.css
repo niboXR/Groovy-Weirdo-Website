@@ -179,10 +179,36 @@ div.quarto-categories {
   }
 }
 
-/*Fixing button alignment on card*/
+
+/* Fixing button alignment on card */
+.card-body.post-contents {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-other-values {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-other-values tbody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-other-values tr:last-child {
+  margin-top: auto;
+}
+
+/*Fixing button alignment on card (initial attempt w/ mobile issues)*/
+
+/*
 .card-body.post-contents {
   height: 100%;
-  max-height: 100% !important;
 }
 
 .card-other-values {
@@ -190,6 +216,8 @@ div.quarto-categories {
   height: 100%;
   border-collapse: collapse;
 }
+
 .card-other-values tr:last-child {
   vertical-align: bottom;
 }
+*/
