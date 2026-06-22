@@ -151,7 +151,7 @@ add-button: |
 {indented_button}
 ---
 
-{image}
+{image}{{.align-left style="max-width: 600px; width: 100%;"}}
 
 **{price}**
 

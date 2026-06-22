@@ -165,3 +165,8 @@ figcaption {
 table.card-other-values tr td:first-child {
   display: none;
 }
+
+/*Hide quarto categories on product pages*/
+div.quarto-categories {
+  display: none !important;
+}

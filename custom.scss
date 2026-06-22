@@ -48,3 +48,13 @@ $link-hover-color: $brand-dark-magenta;  // Link hover color
 h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em; /*adjust letter spacing*/
 }
+
+
+
+//Product Images//
+/* Target only images given the .align-left class in your Markdown */
+img.align-left {
+    display: block;
+    margin-right: auto;
+    margin-left: 0;
+}
