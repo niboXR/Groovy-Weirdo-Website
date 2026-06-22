@@ -170,3 +170,11 @@ table.card-other-values tr td:first-child {
 div.quarto-categories {
   display: none !important;
 }
+
+
+/*At least 2 quarto grid columns*/
+@media (max-width: 768px) {
+  .quarto-listing-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
