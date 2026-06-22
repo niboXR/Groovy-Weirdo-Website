@@ -178,3 +178,18 @@ div.quarto-categories {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/*Fixing button alignment on card*/
+.card-body.post-contents {
+  height: 100%;
+}
+
+.card-other-values {
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
+
+.card-other-values tr:last-child {
+  vertical-align: bottom;
+}
