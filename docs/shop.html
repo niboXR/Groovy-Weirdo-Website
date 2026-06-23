@@ -222,7 +222,7 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782169939378" data-listing-reading-time-sort="1" data-listing-word-count-sort="40">
+<div class="g-col-1" data-index="0" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782172948806" data-listing-reading-time-sort="1" data-listing-word-count-sort="40">
 <a href="./shop/virtual-pet-sticker.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -578,7 +578,7 @@ add-button
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782169939376" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
+<div class="g-col-1" data-index="1" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782172948804" data-listing-reading-time-sort="1" data-listing-word-count-sort="39">
 <a href="./shop/lava-lamp-sticker.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -934,7 +934,7 @@ add-button
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782169939373" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
+<div class="g-col-1" data-index="2" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782172948801" data-listing-reading-time-sort="1" data-listing-word-count-sort="44">
 <a href="./shop/groovy-weirdo-sticker.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1290,7 +1290,7 @@ add-button
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782169939368" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
+<div class="g-col-1" data-index="3" data-categories="U3RpY2tlcg==" data-listing-file-modified-sort="1782172948797" data-listing-reading-time-sort="1" data-listing-word-count-sort="42">
 <a href="./shop/flip-phone-sticker.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -1649,6 +1649,25 @@ add-button
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->
+document.addEventListener("DOMContentLoaded", function () {
+
+  const schemeLinks = document.querySelectorAll('link.quarto-color-scheme');
+
+
+
+  schemeLinks.forEach((el) =&gt; {
+
+    const mode = el.getAttribute("data-mode"); // "light" or "dark"
+
+    if (mode) {
+
+      el.id = `quarto-color-scheme-${mode}`; // e.g. "quarto-color-scheme-light"
+
+    }
+
+  });
+
+});
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

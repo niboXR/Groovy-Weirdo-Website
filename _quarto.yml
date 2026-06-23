@@ -65,10 +65,8 @@ website:
 format:
   html:
     theme: [custom.scss, brand]
-      # - none # No bootswatch themeing
-      # - _brand.yml
-      # - custom.scss           # Injected on top of the brand layer
     css: assets/styles.css      # custom CSS injected client-side
+    include-after-body: _includes/dedup-color-ids.js
     toc: false            # Adds a Table of Contents to pages
     page-layout: full
     from: markdown+emoji

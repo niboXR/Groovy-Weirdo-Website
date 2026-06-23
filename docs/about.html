@@ -167,6 +167,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 </main> <!-- /main -->
+document.addEventListener("DOMContentLoaded", function () {
+
+  const schemeLinks = document.querySelectorAll('link.quarto-color-scheme');
+
+
+
+  schemeLinks.forEach((el) =&gt; {
+
+    const mode = el.getAttribute("data-mode"); // "light" or "dark"
+
+    if (mode) {
+
+      el.id = `quarto-color-scheme-${mode}`; // e.g. "quarto-color-scheme-light"
+
+    }
+
+  });
+
+});
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
