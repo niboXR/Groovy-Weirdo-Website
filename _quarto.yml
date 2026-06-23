@@ -6,6 +6,7 @@ project:
     - scripts/get-files.R # get markdown files from collaborative obsidian vault
   post-render:
   - scripts/cleanup.R #cleanup redundant files from prerender
+  - scripts/dedup-ids.R #dedup IDs (Quarto bug)
   resources: 
     - CNAME
     - assets/images
@@ -71,7 +72,6 @@ format:
     css: assets/styles.css      # custom CSS injected client-side
     toc: false            # Adds a Table of Contents to pages
     page-layout: full
-    include-after-body: _includes/dedup-color-ids.html
     from: markdown+emoji
     axe: 
       output: console #shows in console, use 'document' to show on page on 'quarto preview'

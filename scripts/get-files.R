@@ -1,19 +1,4 @@
 
-##################################
-# Get Homepage and name it index #
-##################################
-
-source_file <- "../../Homepage.md"
-copied_file   <- "index.md"
-
-if (file.exists(source_file)) {
-  file.copy(from = source_file, to = copied_file, overwrite = TRUE)
-  message("Homepage successfully copied and renamed to index.md")
-} else {
-  stop("Error: Source file '../../Homepage.md' not found.")
-}
-
-
 #########
 # PAGES #
 #########
