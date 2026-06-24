@@ -6,7 +6,7 @@ project:
     - scripts/get-files.R # get markdown files from collaborative obsidian vault
   post-render:
   - scripts/cleanup.R #cleanup redundant files from prerender
-  # - scripts/dedup-ids.R #dedup IDs (Quarto bug)
+  - scripts/dedup-ids.R #dedup IDs (Quarto bug)
   resources: 
     - CNAME
     - assets/images
