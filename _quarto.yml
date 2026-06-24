@@ -38,15 +38,15 @@ website:
       - href: index.md   # Home page link
         text: Home
         aria-label: "Home"
-      - href: about.md  # About link
-        text: About
-        aria-label: "About"
       - href: portfolio.md   # Portfolio
         text: Portfolio
         aria-label: "Portfolio"
       - href: shop.md   # Shop
         text: Shop
         aria-label: "Shop"
+      - href: about.md  # About link
+        text: About
+        aria-label: "About"
 
         
   # Define website footer
@@ -54,6 +54,9 @@ website:
     background: primary
     border: false
     left:
+      - icon: envelope-at-fill
+        href: mailto:hello@groovyweirdo.com
+        aria-label: Email
       - icon: instagram
         href: https://www.instagram.com/groovyweirdo_/
         aria-label: Instagram
