@@ -1,3 +1,6 @@
+# INCLUDING THIS SCRIPT CAUSED MY LOGO TO DISSAPEAR #
+
+
 library(xml2)
 
 html_files <- list.files("docs", pattern = "\\.html$", recursive = TRUE, full.names = TRUE)
