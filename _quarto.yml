@@ -18,7 +18,7 @@ website:
   favicon: assets/images/groovy-weirdo-icon.svg
   announcement: 
     icon: cone-striped
-    dismissable: false
+    dismissable: true
     content: "This site is in development. [Report an issue](/feedback.html){target='_blank'}."
     position: above-navbar
     type: secondary #options include primary, secondary, success, danger, warning, info, light, dark
@@ -54,6 +54,10 @@ website:
     background: primary
     border: false
     left:
+      - icon: chat-square-text-fill
+        href: /feedback.html
+        target: _blank
+        aria-label: Feedback
       - icon: envelope-at-fill
         href: mailto:hello@groovyweirdo.com
         aria-label: Email
