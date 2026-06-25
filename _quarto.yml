@@ -18,9 +18,9 @@ website:
   favicon: assets/images/groovy-weirdo-icon.svg
   announcement: 
     icon: cone-striped
-    dismissable: true
-    content: "This site is in development. [Report an issue](https://github.com/niboXR/Groovy-Weirdo-Website/issues)."
-    position: below-navbar
+    dismissable: false
+    content: "This site is in development. [Report an issue](/feedback.html){target='_blank'}."
+    position: above-navbar
     type: secondary #options include primary, secondary, success, danger, warning, info, light, dark
     
   open-graph:

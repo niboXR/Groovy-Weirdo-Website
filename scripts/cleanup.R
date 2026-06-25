@@ -3,7 +3,7 @@
 #########################################
 
 # 1. Define the targets for deletion
-files_to_delete  <- c("index.md", "about.md", "portfolio.md", "shop.md")
+files_to_delete  <- c("index.md", "about.md", "portfolio.md", "shop.md", "feedback.md")
 folders_to_clear <- c("shop")
 
 # 2. Delete the individual files
