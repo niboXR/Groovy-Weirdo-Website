@@ -73,51 +73,67 @@ footer.footer .nav-footer-right {
 }
 
 
-/***********************
-*Aurora Borealis Layout*
-***********************/
-        .portfolio-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/******************************
+*3 ITEM grid with hero to left*
+******************************/
+.portfolio-container {
+    /*max-width: 1200px;*/
+    margin: 0 auto;
+}
 
-        /* The Grid System */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
+/* The Grid System */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
 
-        /* Individual image wrapper items */
-        .grid-item {
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+/* Individual image wrapper items */
+.grid-item {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
-        /* Makes the large portrait image take up two rows vertically */
-        .item-hero {
-            grid-row: span 2;
-        }
 
-        /* Ensure images scale perfectly without losing their aspect ratio */
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Change to 'contain' if you absolute forbid minor cropping */
-            display: block;
-        }
 
-        /* Responsive design for tablets and mobile phones */
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr; /* Stacks them in a clean single column on mobile */
-            }
-            .item-hero {
-                grid-row: auto;
-            }
-        }
+
+/* Makes the large portrait image take up two rows vertically */
+.item-hero {
+    grid-row: span 2;
+    height: 720px !important;
+    min-height: 720px; /*solves lazy loading*/
+}
+
+.item-secondary {
+    height: 344px !important;
+}
+
+/* Ensure images scale perfectly without losing their aspect ratio */
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Change to 'contain' if you absolute forbid minor cropping */
+    display: block;
+}
+
+/* Responsive design for tablets and mobile phones */
+@media (max-width: 768px) {
+
+    .item-hero {
+      
+      height: 360px !important;
+      min-height: 360px !important; /*solves lazy loading*/
+
+
+    }
+    .item-secondary {
+      
+        height: 172px !important;
+        
+    }
+}
         
 /*************************
 *Horizontal Image Gallery*
@@ -127,7 +143,13 @@ footer.footer .nav-footer-right {
   display: flex;
   gap: 20px; /* Space between the images */
   align-items: center; /* Aligns them in the middle vertically */
-  height: 500px; /* Equal height on desktop */
+  height: 540px; /* Equal height on desktop */
+  min-height: 540px !important; /*solves lazy loading*/
+  
+  overflow: hidden;
+
+
+
 }
 
 .image-gallery img {
@@ -140,15 +162,25 @@ footer.footer .nav-footer-right {
 
 /* Responsive styles for mobile screens (under 768px wide) */
 @media (max-width: 768px) {
+  
   .image-gallery {
-    flex-direction: column; /* Stacks images vertically */
-    height: auto; /* Removes the fixed desktop height restriction */
+    /*flex-direction: column; /* Stacks images vertically */
     gap: 16px; /* Slightly tighter gap for mobile screens */
+    height: 172px !important; /* Removes the fixed desktop height restriction */
+    min-height: 172px !important; /*solves lazy loading*/
+
+
   }
 
   .image-gallery img {
-    height: auto; /* Allows images to find their natural heights */
-    aspect-ratio: auto; /* Ensures no cropping occurs on mobile */
+      
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    height: 100%;
+    object-fit: cover;
+
+
   }
 }
 
