@@ -16,10 +16,10 @@ website:
   description: "Groovy Weirdo art portfolio and shop"
   image: "assets/images/groovy-weirdo-logo-360x180.png"
   favicon: assets/images/groovy-weirdo-icon.svg
-  announcement: 
-    icon: cone-striped
+  announcement:
+    # icon: cone-striped
     dismissable: true
-    content: "This site is in development. [Report an issue](/feedback.html){target='_blank'}."
+    content: "<div style='display: block; text-align: left;'><i class='bi bi-cone-striped' style='margin-right: 4px;'></i>This site is in development. [Report an issue](/feedback.html){target='_blank'}.</div><div style='display: block; text-align: left; margin-top: 4px;'><i class='bi bi-megaphone-fill' style='margin-right: 4px;'></i> Free shipping on orders over $15</div>"
     position: above-navbar
     type: secondary #options include primary, secondary, success, danger, warning, info, light, dark
     
@@ -82,4 +82,5 @@ format:
     from: markdown+emoji
     axe: 
       output: console #shows in console, use 'document' to show on page on 'quarto preview'
+
       
