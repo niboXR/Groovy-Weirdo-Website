@@ -120,6 +120,32 @@ all_html_buttons <- lapply(1:nrow(products), function(i) {
 
 
 ########################
+# REVIEW FORM SNIPPETS #
+########################
+# Define the function to generate a single snippet
+
+all_review_forms <- function(id, handle) {
+  
+  generic_review_form <- paste(readLines("_includes/review-form.html", warn = FALSE), collapse = "\n")
+  
+  specific_review_form <- generic_review_form %>%
+    gsub(pattern = 'SHOPIFY_PRODUCT_ID', replacement = id, x = ., fixed = TRUE) %>% #replace with real product id
+    gsub(pattern = 'SHOPIFY_PRODUCT_HANDLE', replacement = handle, x = ., fixed = TRUE)
+  
+  new_filepath <- paste0("_includes/review-form-", handle, ".html")
+  writeLines(specific_review_form, new_filepath)
+  
+}
+
+# Loop through the rows to generate all configurations
+all_html_buttons <- lapply(1:nrow(products), function(i) {
+  all_review_forms(
+    id = products$id[i],
+    handle   = products$handle[i]
+  )
+})
+
+########################
 # CREATE PRODUCT PAGES #
 ########################
 
@@ -131,12 +157,11 @@ if (!dir.exists(output_dir)) dir.create(output_dir, recursive = TRUE)
 write_product_markdown <- function(id, handle, title, product_type, date, desc, price, image, image_link) {
   filepath <- file.path(output_dir, paste0(handle, ".md"))
   
-  # add_button_html <- paste(readLines("_includes/add-button.html", warn = FALSE), collapse = "\n")
+  #adds add button to yaml for listings
   add_button_html <- read_file(glue("_includes/add-button-{handle}.html"))
   indented_button <- paste0("  ", gsub("\n", "\n  ", add_button_html))
   
-  # Inject variables using str_glue. 
-  # Backslashes escape quotes for valid YAML syntax inside the front matter.
+  
   markdown_content <- str_glue('
 ---
 id: {id}
@@ -167,7 +192,12 @@ add-button: |
 
 # Reviews
 
-This product does not have any reviews yet. Come back later to see reviews from verified buyers. 
+This product does not have any reviews yet. Come back later to see reviews from verified buyers.
+
+
+# Leave a Review
+
+{{{{< include ../_includes/review-form-{handle}.html >}}}}
 
 ---
 
