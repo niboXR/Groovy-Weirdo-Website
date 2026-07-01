@@ -1,14 +1,18 @@
 ```{=html}
 <form id="reviewForm" class="review-form" action="https://script.google.com/macros/s/AKfycbyGrGcxBOX71yAuD6YLKx4I_JPvKQuiE2zYt0v9N4zp2lmJC6xqA-c_N6TFD98LwDJ61A/exec" method="POST">
   
+  <!-- HIDDEN FIELDS -->
   <!-- Tracks which product the review belongs to -->
   <input type="hidden" name="productId" value="8253393141826">
   <input type="hidden" name="productHandle" value="groovy-weirdo-sticker">
-
+  
+  <!--Timestamp -->
+  <input type="hidden" id="submittedAt" name="submittedAt" value="">
   
   <!-- help prevent bots and scripts from posting reviews -->
   <input type="hidden" name="secretToken" value="MySuperSecretPassword123"> 
-
+  
+  <!-- PUBLIC FIELDS -->
 
   <!-- Rating Scale -->
   <div class="form-group">
@@ -17,43 +21,53 @@
     </div>
     <div class="star-rating" role="radiogroup" aria-labelledby="ratingLabel">
       <button type="button" class="star" data-value="1" role="radio" aria-label="1 star">
-        <svg viewBox="0 0 24 24" class="star-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>        </svg>
       </button>
       <button type="button" class="star" data-value="2" role="radio" aria-label="2 stars">
-        <svg viewBox="0 0 24 24" class="star-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>        </svg>
       </button>
       <button type="button" class="star" data-value="3" role="radio" aria-label="3 stars">
-        <svg viewBox="0 0 24 24" class="star-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>        </svg>
       </button>
       <button type="button" class="star" data-value="4" role="radio" aria-label="4 stars">
-        <svg viewBox="0 0 24 24" class="star-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>        </svg>
       </button>
       <button type="button" class="star" data-value="5" role="radio" aria-label="5 stars">
-        <svg viewBox="0 0 24 24" class="star-icon"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </button>
+        <svg viewBox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"/>        </svg>
+      </button>      
+
   </div>
     <!-- Hidden input so this still submits like a form field -->
     <input type="hidden" id="ratingRange" name="rating" value="5">
   </div>
 
-
-  <!-- Review Text -->
-  <div class="form-group">
-    <label for="reviewTitle">Review title</label>
-    <input type="text" id="reviewTitle" name="reviewTitle" placeholder="Summarize your experience">
-  </div>
-
-  <div class="form-group">
-    <label for="reviewContent">Review content</label>
-    <textarea id="reviewContent" name="reviewContent" rows="5" placeholder="What did you like or dislike?"></textarea>
-  </div>
-  
   <!-- Reviewer Info -->
   <div class="form-group">
     <label for="reviewerName">Display name</label>
     <input type="text" id="reviewerName" name="reviewerName" placeholder="e.g., Jane Doe" required>
   </div>
-
+  
+  <div class="form-group">
+    <label for="reviewerEmail">Email address</label>
+    <input type="text" id="reviewerEmail" name="reviewerEmail" placeholder="Email used for your order" required>
+  </div>
+  
+  <!-- Review Text -->
+  <div class="form-group">
+    <label for="reviewContent">Review</label>
+    <textarea id="reviewContent" name="reviewContent" rows="5" placeholder="What did you like or dislike?"></textarea>
+  </div>
+  
   
   
   <!-- Image Upload -->
@@ -115,6 +129,8 @@ setRating(Number(ratingInput.value));
 reviewForm.addEventListener('submit', (e) => {
   e.preventDefault(); // Prevents the page from hanging/redirecting
   
+   document.getElementById('submittedAt').value = new Date().toISOString(); //timestamp
+   
   // Disable button and show loading text
   submitBtn.disabled = true;
   formStatus.textContent = "Submitting your review...";
@@ -135,7 +151,7 @@ reviewForm.addEventListener('submit', (e) => {
   .then(response => response.json())
   .then(data => {
     if (data.result === 'success') {
-      formStatus.textContent = "Thank you! Your review has been submitted.";
+      formStatus.textContent = "Thank you! Your review has been submitted and will be posted after it is verified.";
       formStatus.className = "form-status success";
       reviewForm.reset();
      // ratingOutput.textContent = "5 / 5 Stars"; // Reset slider text
@@ -159,7 +175,6 @@ reviewForm.addEventListener('submit', (e) => {
 .review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
 .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
 .rating-header { display: flex; justify-content: space-between; align-items: center; }
-.file-help { font-size: 0.75rem; color: #red; }
 .submit-button { cursor: pointer; padding: 0.75rem; background: #60264a; color: white; border: none; border-radius: 4px; }
 .submit-button:disabled { 
     background: #c490b2;  /* muted purple */
@@ -204,18 +219,28 @@ textarea::placeholder {
   cursor: pointer;
   line-height: 0;
 }
+
 .star-icon {
   width: 32px;
   height: 32px;
+}
+
+.star-icon .star-fill {
+  fill: #d4cee4;
+}
+
+.star-icon .star-border {
   fill: none;
   stroke: #2A0876;
-  stroke-width: 1.5;
-  transition: fill 0.15s ease, stroke 0.15s ease;
+  stroke-width: 3;
 }
-/* Filled state — applied via JS, covers both selected and hover-preview */
-.star.filled .star-icon {
-  fill: #2A0876                                                                                                                                                                                                                                                      ; /* swap for your brand color */
-  stroke: #2A0876                                                                                                                                                                                                                                                      ;
+
+.star.filled .star-icon .star-fill {
+  fill: #2A0876;
+}
+
+.star:hover .star-icon .star-fill {
+  fill: #2A0876;
 }
 
 </style>
