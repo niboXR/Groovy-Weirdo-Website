@@ -253,3 +253,126 @@ div.quarto-categories {
   vertical-align: bottom;
 }
 */
+
+
+/*REVIEWS*/
+
+.review-header {
+  margin: 0;
+}
+
+.review {
+  display: flex;
+  justify-content: flex-start; /* was space-between — this caused the wide-screen gap */
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 700px; /* adjust to match your site's content column width */
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.review-body {
+  flex: 1;
+  min-width: 0; /* prevents long text from overflowing the flex item */
+}
+
+.review-image {
+  display: block; /* removes inline baseline spacing that was pushing it down */
+  width: clamp(100px, 25vw, 300px);
+  height: clamp(100px, 25vw, 300px);
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+
+/*Reviw summary*/
+.rv-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+}
+
+.rv-star-row {
+  display: flex;
+  gap: 2px;
+}
+
+.rv-summary-count {
+  font-size: 0.85rem;
+  color: #2A0876;
+}
+
+.rv-star {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.rv-star svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.rv-star-outline path {
+  fill: none;
+  stroke: #2A0876;
+  stroke-width: 4px;
+}
+
+.rv-star-fill-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--rv-fill);
+  overflow: hidden;
+}
+
+.rv-star-fill-svg path {
+  fill: #2A0876;
+}
+
+.rv-review {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #EF60b9;
+  border-bottom: 1px solid #EF60b9;
+}
+
+.rv-review-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rv-review-header {
+  margin: 0;
+}
+
+.rv-review-image {
+  display: block;
+  width: clamp(100px, 25vw, 300px);
+  height: clamp(100px, 25vw, 300px);
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.rv-no-reviews {
+  color: #2A0876;
+}
