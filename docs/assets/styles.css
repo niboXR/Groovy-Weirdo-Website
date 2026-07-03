@@ -257,8 +257,36 @@ div.quarto-categories {
 
 /*REVIEWS*/
 
-.review-header {
-  margin: 0;
+.rv-review-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 1.0rem 0;
+
+}
+
+.rv-review-author {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2A0876;
+}
+
+.rv-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #2A0876;
+  background: #EF60b9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.rv-verified-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
 }
 
 .review {
@@ -279,8 +307,8 @@ div.quarto-categories {
 
 .review-image {
   display: block; /* removes inline baseline spacing that was pushing it down */
-  width: clamp(100px, 25vw, 300px);
-  height: clamp(100px, 25vw, 300px);
+  width: clamp(150px, 50vw, 300px);
+  height: clamp(150px, 50vw, 300px);
   object-fit: cover;
   border-radius: 4px;
   flex-shrink: 0;
@@ -292,14 +320,17 @@ div.quarto-categories {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 0.35rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
 }
 
 .rv-star-row {
   display: flex;
-  gap: 2px;
+  gap: 12px;
 }
 
 .rv-summary-count {
@@ -320,6 +351,22 @@ div.quarto-categories {
   left: 0;
   width: 18px;
   height: 18px;
+}
+
+.rv-summary .rv-star {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.rv-summary .rv-star svg {
+  width: 32px;
+  height: 32px;
+
 }
 
 .rv-star-outline path {
@@ -360,9 +407,6 @@ div.quarto-categories {
   min-width: 0;
 }
 
-.rv-review-header {
-  margin: 0;
-}
 
 .rv-review-image {
   display: block;

@@ -294,6 +294,13 @@ all_html_buttons <- lapply(1:nrow(products), function(i) {
   <div class="rv-review-body">
     <div class="rv-review-header">
       <span class="rv-review-author">%s</span>
+      <span class="rv-verified-badge">
+        <svg class="rv-verified-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 12.5L11 14.5L15.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        Verified
+      </span>
     </div>
     <span class="rv-review-rating" aria-label="%s out of 5 stars">%s</span>
     <p class="rv-review-content">%s</p>
@@ -302,7 +309,7 @@ all_html_buttons <- lapply(1:nrow(products), function(i) {
 </div>',
             htmlEscape(reviewerName),
             rating,
-            build_star_row(rating),  # reuse the same SVG star, now consistent between summary and individual reviews
+            build_star_row(rating),
             htmlEscape(reviewContent),
             image_tag
           )
