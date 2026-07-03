@@ -875,7 +875,9 @@ The sticker is approximately 3.5 by 1.5 inches.
   
   <div class="form-group">
     <label for="reviewerEmail">Email address</label>
-    <input type="text" id="reviewerEmail" name="reviewerEmail" placeholder="Email used for your order" required="">
+    <input type="text" id="reviewerEmail" name="reviewerEmail" placeholder="e.g., janedoe@gmail.com" required="">
+    <small class="file-help">IMPORTANT! This should be the email you used on your order so that we can verify your review.</small>
+  
   </div>
   
   <!-- Review Text -->
@@ -887,13 +889,97 @@ The sticker is approximately 3.5 by 1.5 inches.
   
   
   <!-- Image Upload -->
-  <!--
-  <div class="form-group">
+  <div class="form-group" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;">
     <label for="reviewImage">Upload a Photo (Optional)</label>
-    <input type="file" id="reviewImage" name="reviewImage" accept="image/*">
-    <small class="file-help">JPG, PNG, or WebP files allowed.</small>
+  
+    <input type="file" id="reviewImage" name="reviewImage" accept="image/*" class="visually-hidden">
+  
+    <label for="reviewImage" class="upload-square-btn" aria-label="Upload a photo">
+      <i class="bi bi-upload"></i>
+      <span class="upload-check" id="uploadCheck">
+        <i class="bi bi-check"></i>
+      </span>
+    </label>
+  
+    <small class="file-help" id="fileHelp">JPG, PNG, or WebP files allowed.</small>
   </div>
-  -->
+  
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  
+    .upload-square-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: transparent;
+      border: 2px solid #2A0876;
+      color: #2A0876;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+  
+    .upload-square-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+    }
+  
+    .upload-square-btn i {
+      font-size: 24px;
+    }
+  
+    .upload-check {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #2A0876;
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .upload-check.visible {
+      display: flex;
+    }
+  
+    .upload-check i {
+      font-size: 12px;
+    }
+  
+    #reviewImage:focus-visible + .upload-square-btn {
+      outline: 2px solid #2A0876;
+      outline-offset: 3px;
+    }
+  </style>
+  
+  <script>
+    document.getElementById('reviewImage').addEventListener('change', function() {
+      const check = document.getElementById('uploadCheck');
+      const help = document.getElementById('fileHelp');
+      if (this.files && this.files[0]) {
+        check.classList.add('visible');
+        help.textContent = this.files[0].name + ' was uploaded';
+      } else {
+        check.classList.remove('visible');
+        help.textContent = 'JPG, PNG, or WebP files allowed.';
+      }
+    });
+  </script>  
   
   <!-- Submit Button -->
   <button type="submit" id="submitBtn" class="submit-button">Submit Review</button>
@@ -939,28 +1025,76 @@ starRating.addEventListener('mouseleave', () => paint(Number(ratingInput.value))
 
 // Initialize on load
 setRating(Number(ratingInput.value));
-;
 
-// 2. Handle the form submission in the background (PASTE THIS)
-reviewForm.addEventListener('submit', (e) => {
+
+// 2. Handle the image upload
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// 3. Handle the form submission in the background
+reviewForm.addEventListener('submit', async (e) => {   // <-- added "async" here
   e.preventDefault(); // Prevents the page from hanging/redirecting
-  
-   document.getElementById('submittedAt').value = new Date().toISOString(); //timestamp
-   
-  // Disable button and show loading text
+ 
+  // Timestamp
+  document.getElementById('submittedAt').value = new Date().toISOString();
+ 
+  // Grab the selected file (if any)
+  const fileInput = document.getElementById('reviewImage');
+  const file = fileInput.files[0];   // <-- this line was missing
+ 
+  // Image validation
+  const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+ 
+  if (file) {
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      formStatus.textContent = "Please upload a JPG, PNG, or WebP image.";
+      formStatus.className = "form-status error";
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      formStatus.textContent = "Image is too large. Please choose one under 5MB.";
+      formStatus.className = "form-status error";
+      return;
+    }
+  }
+ 
+  // On submission, disable button and show loading text
   submitBtn.disabled = true;
   formStatus.textContent = "Submitting your review...";
   formStatus.className = "form-status";
-
-  const formData = new FormData(reviewForm);
-  const urlEncodedData = new URLSearchParams(formData).toString();
-  
-  // Send data to your Google Apps Script URL
+ 
+  // Build the payload manually — field names here must match
+  // what your Apps Script reads on the other side
+  const payload = {
+    productId: reviewForm.productId.value,
+    productHandle: reviewForm.productHandle.value,
+    submittedAt: reviewForm.submittedAt.value,
+    secretToken: reviewForm.secretToken.value,
+    rating: reviewForm.rating.value,
+    reviewerName: reviewForm.reviewerName.value,
+    reviewerEmail: reviewForm.reviewerEmail.value,
+    reviewContent: reviewForm.reviewContent.value
+  };
+ 
+  if (file) {
+    payload.fileData = await fileToBase64(file);
+    payload.fileName = file.name;
+    payload.fileType = file.type;
+  }
+ 
+  // Send data to your Google Apps Script URL as JSON
   fetch(reviewForm.action, {
     method: 'POST',
-    body: urlEncodedData,
+    body: JSON.stringify(payload),
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded' //Tells google the data type to expect
+      'Content-Type': 'text/plain'   // avoids a CORS preflight Apps Script can't handle
     },
     mode: 'cors'
   })
@@ -970,7 +1104,7 @@ reviewForm.addEventListener('submit', (e) => {
       formStatus.textContent = "Thank you! Your review has been submitted and will be posted after it is verified.";
       formStatus.className = "form-status success";
       reviewForm.reset();
-     // ratingOutput.textContent = "5 / 5 Stars"; // Reset slider text
+      setRating(5);
     } else {
       throw new Error(data.error);
     }
@@ -984,6 +1118,7 @@ reviewForm.addEventListener('submit', (e) => {
     submitBtn.disabled = false;
   });
 });
+
 
 </script>
 
@@ -1001,7 +1136,7 @@ reviewForm.addEventListener('submit', (e) => {
 .form-status { font-size: 0.875rem; margin-top: 0.5rem; font-weight: 500; }
 .form-status.success { color: #2A0876; }
 .form-status.error { color: #8f3a6f; }
-
+.file-help { font-size: 0.75rem; color: #8f3a6f; }
 
 
 input[type="text"],
