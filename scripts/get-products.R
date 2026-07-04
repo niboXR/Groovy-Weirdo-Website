@@ -290,10 +290,10 @@ all_html_buttons <- lapply(1:nrow(products), function(i) {
           }
           
           sprintf(
-            '<div class="rv-review">
-  <div class="rv-review-body">
-    <div class="rv-review-header">
-      <span class="rv-review-author">%s</span>
+'<div class="rv-review">
+  <div class="rv-review-header">
+    <div class="rv-review-author">
+      <span class="rv-display-name">%s</span>
       <span class="rv-verified-badge">
         <svg class="rv-verified-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M9 12.5L11 14.5L15.5 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -303,9 +303,11 @@ all_html_buttons <- lapply(1:nrow(products), function(i) {
       </span>
     </div>
     <span class="rv-review-rating" aria-label="%s out of 5 stars">%s</span>
-    <p class="rv-review-content">%s</p>
   </div>
-  %s
+  <div class="rv-review-body">
+    <p class="rv-review-content">%s</p>
+    %s
+  </div>
 </div>',
             htmlEscape(reviewerName),
             rating,
@@ -402,14 +404,28 @@ add-button: |
 
 {{{{< include ../_includes/add-button-{handle}.html >}}}}
 
-# Reviews
+---
+
+<section id="reviews">
+
+  <!-- ONLY this header will be centered -->
+  <h1 style="text-align: center;">Reviews</h1>
 
 {{{{< include ../_includes/product-reviews/{id}.html >}}}}
 
+</section>
 
-# Leave a Review
+---
+
+<section id="leave-a-review">
+
+  <!-- ONLY this header will be centered -->
+  <h1 style="text-align: center;">Leave a Review</h1>
 
 {{{{< include ../_includes/review-form-{handle}.html >}}}}
+
+</section>
+
 
 ---
 

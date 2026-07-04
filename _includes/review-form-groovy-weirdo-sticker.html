@@ -17,7 +17,7 @@
   <!-- Rating Scale -->
   <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
     <div class="rating-header">
-      <label id="ratingLabel">Rating</label>
+      <label id="ratingLabel">Your rating</label>
     </div>
     <div class="star-rating" role="radiogroup" aria-labelledby="ratingLabel">
       <button type="button" class="star" data-value="1" role="radio" aria-label="1 star">
@@ -307,7 +307,7 @@ reviewForm.addEventListener('submit', async (e) => {   // <-- added "async" here
 </script>
 
 <style>
-.review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
+.review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; }
 .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
 .rating-header { display: flex; justify-content: space-between; align-items: center; }
 .submit-button { cursor: pointer; padding: 0.75rem; background: #60264a; color: white; border: none; border-radius: 4px; }

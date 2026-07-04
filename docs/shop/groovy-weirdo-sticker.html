@@ -808,13 +808,20 @@ The sticker is approximately 3.5 by 1.5 inches.
 })();
 /*]]>*/
 </script>
-</section>
-<section id="reviews" class="level1">
-<h1>Reviews</h1>
+<hr>
+<section id="reviews">
+<!-- ONLY this header will be centered -->
+<h1 style="text-align: center;">
+Reviews
+</h1>
 <p class="rv-no-reviews">This product does not have any reviews yet. Be the first to leave a review.</p>
 </section>
-<section id="leave-a-review" class="level1">
-<h1>Leave a Review</h1>
+<hr>
+<section id="leave-a-review">
+<!-- ONLY this header will be centered -->
+<h1 style="text-align: center;">
+Leave a Review
+</h1>
 <form id="reviewForm" class="review-form" action="https://script.google.com/macros/s/AKfycbyGrGcxBOX71yAuD6YLKx4I_JPvKQuiE2zYt0v9N4zp2lmJC6xqA-c_N6TFD98LwDJ61A/exec" method="POST">
   
   <!-- HIDDEN FIELDS -->
@@ -833,7 +840,7 @@ The sticker is approximately 3.5 by 1.5 inches.
   <!-- Rating Scale -->
   <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
     <div class="rating-header">
-      <label id="ratingLabel">Rating</label>
+      <label id="ratingLabel">Your rating</label>
     </div>
     <div class="star-rating" role="radiogroup" aria-labelledby="ratingLabel">
       <button type="button" class="star" data-value="1" role="radio" aria-label="1 star">
@@ -1123,7 +1130,7 @@ reviewForm.addEventListener('submit', async (e) => {   // <-- added "async" here
 </script>
 
 <style>
-.review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 500px; }
+.review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; }
 .form-group { display: flex; flex-direction: column; gap: 0.25rem; }
 .rating-header { display: flex; justify-content: space-between; align-items: center; }
 .submit-button { cursor: pointer; padding: 0.75rem; background: #60264a; color: white; border: none; border-radius: 4px; }
@@ -1195,6 +1202,7 @@ textarea::placeholder {
 }
 
 </style>
+</section>
 <hr>
 <p><a href="../shop.html">Back to shop</a></p>
 
