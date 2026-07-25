@@ -16,6 +16,11 @@
       --iscr-bg: #16181c;
       --iscr-panel: #EF60b9;
       --iscr-accent: #2A0876;
+      --iscr-thumb-border: #A278FF; /* unselected thumbnail border — brand purple */
+      --iscr-thumb-border-active: #2A0876; /* selected thumbnail border — deeper indigo */
+      --iscr-nav-bg: rgba(42, 8, 118, 0.6); /* indigo, instead of plain black/gray */
+      --iscr-nav-hover-bg: #67def9; /* brand blue */
+      --iscr-nav-hover-text: #2A0876; /* dark text for contrast against the light hover blue */
       --iscr-text: #eee9e1;
       --iscr-muted: #8a8f98;
       --iscr-thumb-gap: 14px;
@@ -97,8 +102,8 @@
       border-radius:8px;
       overflow:hidden;
       cursor:pointer;
-      border:2px solid transparent;
-      opacity:.55;
+      border:2px solid var(--iscr-thumb-border);
+      opacity:.8;
       padding:0;
       font:inherit;
       display:block;
@@ -123,7 +128,7 @@
     }
     .iscr .iscr-thumb.active{
       opacity:1;
-      border-color:var(--iscr-accent);
+      border-color:var(--iscr-thumb-border-active);
     }
  
     .iscr .iscr-nav-btn{
@@ -132,20 +137,20 @@
       height:32px;
       border-radius:50%;
       border:none;
-      background:rgba(0,0,0,0.55);
+      background:var(--iscr-nav-bg);
       color:var(--iscr-text);
       cursor:pointer;
       display:flex;
       align-items:center;
       justify-content:center;
       font-size:16px;
-      transition: background .2s ease;
+      transition: background .2s ease, color .2s ease;
     }
-    .iscr .iscr-nav-btn:hover{ background: var(--iscr-accent); color:var(--iscr-text); }
+    .iscr .iscr-nav-btn:hover{ background: var(--iscr-nav-hover-bg); color:var(--iscr-nav-hover-text); }
     .iscr .iscr-nav-btn:disabled{
       opacity:.25;
       cursor:default;
-      background:rgba(0,0,0,0.55);
+      background:var(--iscr-nav-bg);
       color:var(--iscr-text);
     }
  
