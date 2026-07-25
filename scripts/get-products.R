@@ -91,6 +91,70 @@ products <- shopify_products %>%
   select(id, product_type, title, date, handle, desc, price, image, image_link)
 
 
+################################
+# Create image gallery snippet #
+################################ 
+
+# 1. Define the function to generate a single snippet
+generate_image_gallery <- function(id, handle) {
+  
+  
+  # write image array to inject into image-scroller
+  product_row <- shopify_products[shopify_products$handle == handle, ]
+  
+  images_df <- product_row$images[[1]]
+  if (is.null(images_df) || nrow(images_df) == 0) {
+    image_records <- list()
+  } else {
+    # Build src/label pairs
+    src <- images_df$src
+    
+    # Use alt text as label; fall back to product title if alt is missing/blank
+    label <- images_df$alt
+    if (is.null(label)) label <- rep(NA_character_, length(src))
+    fallback_title <- product_row$title[[1]]
+    label <- ifelse(is.na(label) | label == "", fallback_title, label)
+    
+    keep <- !is.na(src)
+    image_records <- data.frame(src = src[keep], label = label[keep], stringsAsFactors = FALSE)
+  }
+  
+  # Build JS array of objects: [{ src: "...", label: "..." }, ...]
+  if (length(image_records) == 0 || nrow(image_records) == 0) {
+    js_array <- "[]"
+  } else {
+    js_array <- toJSON(image_records, dataframe = "rows", auto_unbox = TRUE, pretty = TRUE)
+  }
+  
+  js_code <- paste0("const images = ", js_array, ";")
+  
+  # get template image gallery
+  image_scroller_html <- paste(readLines("_includes/image-scroller.html", warn = FALSE), collapse = "\n")
+  
+  # update gallery
+  updated_image_scroller_html <- gsub(
+    pattern = 'const images = [];',
+    replacement = js_code,
+    x = image_scroller_html,
+    fixed = TRUE
+  )
+  
+  # save gallery
+  new_filepath <- paste0("_includes/image-scroller-", handle, ".html")
+  writeLines(updated_image_scroller_html, new_filepath)
+  
+}
+
+
+
+# 2. Loop through the rows to generate all configurations
+all_product_images <- lapply(1:nrow(products), function(i) {
+  generate_image_gallery(
+    id = products$id[i],
+    handle   = products$handle[i]
+  )
+})
+
 
 ##################################
 # Create buy buttons html snippet #
@@ -393,7 +457,7 @@ add-button: |
 {indented_button}
 ---
 
-{{{{< include ../_includes/image-scroller.html >}}}}
+{{{{< include ../_includes/image-scroller-{handle}.html >}}}}
 
 # {title}
 **${price}**
