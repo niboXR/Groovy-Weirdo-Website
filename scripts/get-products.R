@@ -393,7 +393,7 @@ add-button: |
 {indented_button}
 ---
 
-{image}{{.align-left style="max-width: 600px; width: 100%;"}}
+{{{{< include ../_includes/image-scroller.html >}}}}
 
 # {title}
 **${price}**

@@ -146,12 +146,273 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center" style="max-width: 600px; width: 100%;">
-<figure class="figure">
-<p><img src="https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Flip_Phone_Sticker_Product_Image.jpg?v=1782406076" class="align-left img-fluid figure-img"></p>
-<figcaption>Flip Phone Sticker</figcaption>
-</figure>
+<!--
+  Image Scroller — embeddable fragment
+  Paste this whole block wherever you want the scroller to appear in your page.
+  No <html>/<head>/<body>/<!DOCTYPE> here on purpose — this is meant to live
+  inside a page that already has those. (It also happens to render fine if you
+  open this file directly in a browser, since browsers auto-supply the missing
+  wrapper tags for standalone preview.)
+-->
+<div class="iscr" id="iscr-root">
+ 
+  <style>
+    /* Custom properties + box-sizing reset are scoped to .iscr so they can't
+       leak out and affect the rest of the host page. */
+    .iscr{
+      --iscr-bg: #16181c;
+      --iscr-panel: #EF60b9;
+      --iscr-accent: #2A0876;
+      --iscr-text: #eee9e1;
+      --iscr-muted: #8a8f98;
+      --iscr-thumb-gap: 14px;
+      --iscr-visible-thumbs: 4; /* change to 3 to fit three thumbnails per row instead */
+ 
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--iscr-text);
+    }
+    .iscr, .iscr *{ box-sizing:border-box; }
+ 
+    .iscr .iscr-stage{
+      width:600px;
+      max-width:90vw;
+      aspect-ratio: 4 / 3; /* matches 600x450 source images */
+      border-radius:12px;
+      overflow:hidden;
+      background:var(--iscr-panel);
+      position:relative;
+      box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    }
+    .iscr .iscr-stage img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:0;
+      animation:iscrFadeIn .35s forwards;
+    }
+    @keyframes iscrFadeIn{ to { opacity:1; } }
+ 
+    .iscr .iscr-caption{
+      /* Visually hidden but still present for screen readers: the aria-live
+         region here announces "now viewing image X of Y: label" whenever
+         the selection changes, without showing redundant text on-screen. */
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0, 0, 0, 0);
+      white-space:nowrap;
+      border:0;
+    }
+ 
+    .iscr .iscr-row-wrap{
+      width:600px;
+      max-width:90vw;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .iscr .iscr-row{
+      flex:1 1 auto;
+      min-width:0;
+      display:flex;
+      gap:var(--iscr-thumb-gap);
+      overflow-x:auto;
+      padding:14px 2px 20px;
+      scroll-behavior:smooth;
+      scrollbar-width:thin;
+      scrollbar-color:var(--iscr-accent) transparent;
+      -webkit-overflow-scrolling:touch;
+      touch-action:pan-x;
+    }
+    .iscr .iscr-row::-webkit-scrollbar{ height:6px; }
+    .iscr .iscr-row::-webkit-scrollbar-thumb{ background:var(--iscr-accent); border-radius:3px; }
+    .iscr .iscr-row::-webkit-scrollbar-track{ background:transparent; }
+ 
+    .iscr .iscr-thumb{
+      flex:0 0 auto;
+      width:clamp(70px, calc((100% - (var(--iscr-visible-thumbs) - 1) * var(--iscr-thumb-gap)) / var(--iscr-visible-thumbs)), 150px);
+      aspect-ratio:4 / 3; /* matches 600x450 source images */
+      border-radius:8px;
+      overflow:hidden;
+      cursor:pointer;
+      border:2px solid transparent;
+      opacity:.55;
+      padding:0;
+      font:inherit;
+      display:block;
+      transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
+      background:var(--iscr-panel);
+    }
+    .iscr .iscr-thumb:focus-visible,
+    .iscr .iscr-nav-btn:focus-visible,
+    .iscr:focus-visible{
+      outline:2px solid var(--iscr-accent);
+      outline-offset:2px;
+    }
+    .iscr .iscr-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .iscr .iscr-thumb:hover{
+      opacity:.85;
+      transform:translateY(-2px);
+    }
+    .iscr .iscr-thumb.active{
+      opacity:1;
+      border-color:var(--iscr-accent);
+    }
+ 
+    .iscr .iscr-nav-btn{
+      flex:0 0 auto;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      border:none;
+      background:rgba(0,0,0,0.55);
+      color:var(--iscr-text);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      transition: background .2s ease;
+    }
+    .iscr .iscr-nav-btn:hover{ background: var(--iscr-accent); color:var(--iscr-text); }
+    .iscr .iscr-nav-btn:disabled{
+      opacity:.25;
+      cursor:default;
+      background:rgba(0,0,0,0.55);
+      color:var(--iscr-text);
+    }
+ 
+    @media (max-width: 640px){
+      /* Slightly larger tap targets on touch devices; no repositioning
+         needed since the buttons already live in their own flex space. */
+      .iscr .iscr-nav-btn{
+        width:38px;
+        height:38px;
+      }
+    }
+  </style>
+ 
+  <div class="iscr" role="group" aria-label="Image gallery" tabindex="0" id="iscr-scroller">
+    <div class="iscr-stage" id="iscr-stage">
+      <img id="iscr-mainImage" src="" alt="Selected image">
+    </div>
+ 
+    <div class="iscr-caption" aria-live="polite">
+      <span id="iscr-imgLabel">—</span>
+      <span class="iscr-count"><span id="iscr-idxNow">1</span> / <span id="iscr-idxTotal">1</span></span>
+    </div>
+ 
+    <div class="iscr-row-wrap">
+      <button class="iscr-nav-btn iscr-nav-prev" id="iscr-prevBtn" aria-label="Previous image">‹</button>
+      <div class="iscr-row" id="iscr-thumbRow" role="group" aria-label="Thumbnails"></div>
+      <button class="iscr-nav-btn iscr-nav-next" id="iscr-nextBtn" aria-label="Next image">›</button>
+    </div>
+  </div>
+ 
+  <script>
+  (function(){
+    // Replace this array with your own images: { src, label }
+    // src can be a URL, a relative path, or a data URI — anything a normal <img> accepts.
+    const images = [
+      { src: "https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Flip_Phone_Sticker_Product_Image.jpg?v=1782406076", label: "Flip Phone Sticker" },
+      { src: "https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Groovy_Weirdo_Product_Image-2.jpg?v=1782406572", label: "Groovy Weirdo Sticker" },
+      { src: "https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Lava_Lamp_Sticker_Product_Image_2.jpg?v=1782405765", label: "Lava Lamp Sticker" },
+      { src: "https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Virtual_Pet_Sticker_Image-2.jpg?v=1782405332", label: "Virtual Pet Sticker" }
+    ];
+ 
+    const stageImg = document.getElementById('iscr-mainImage');
+    const thumbRow = document.getElementById('iscr-thumbRow');
+    const idxNow = document.getElementById('iscr-idxNow');
+    const idxTotal = document.getElementById('iscr-idxTotal');
+    const imgLabel = document.getElementById('iscr-imgLabel');
+    const prevBtn = document.getElementById('iscr-prevBtn');
+    const nextBtn = document.getElementById('iscr-nextBtn');
+    const scrollerEl = document.getElementById('iscr-scroller');
+ 
+    let activeIndex = 0;
+ 
+    function renderThumbs(){
+      thumbRow.innerHTML = '';
+      images.forEach((img, i) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'iscr-thumb' + (i === activeIndex ? ' active' : '');
+        el.setAttribute('aria-label', `View image ${i + 1} of ${images.length}: ${img.label}`);
+        if (i === activeIndex) el.setAttribute('aria-current', 'true');
+        el.innerHTML = `<img src="${img.src}" alt="" loading="lazy">`;
+        el.addEventListener('click', () => selectImage(i));
+        thumbRow.appendChild(el);
+      });
+    }
+ 
+    function selectImage(i){
+      activeIndex = i;
+      stageImg.style.animation = 'none';
+      void stageImg.offsetWidth; // restart fade animation
+      stageImg.style.animation = 'iscrFadeIn .35s forwards';
+      stageImg.src = images[i].src;
+      stageImg.alt = images[i].label;
+      imgLabel.textContent = images[i].label;
+      idxNow.textContent = i + 1;
+ 
+      [...thumbRow.children].forEach((el, j) => {
+        const isActive = j === i;
+        el.classList.toggle('active', isActive);
+        if (isActive) el.setAttribute('aria-current', 'true');
+        else el.removeAttribute('aria-current');
+      });
+ 
+      const activeThumb = thumbRow.children[i];
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+ 
+      updateNavButtons();
+    }
+ 
+    function updateNavButtons(){
+      // Buttons step through images, so they're only disabled at the very first/last image.
+      prevBtn.disabled = activeIndex <= 0;
+      nextBtn.disabled = activeIndex >= images.length - 1;
+    }
+ 
+    prevBtn.addEventListener('click', () => selectImage(Math.max(activeIndex - 1, 0)));
+    nextBtn.addEventListener('click', () => selectImage(Math.min(activeIndex + 1, images.length - 1)));
+    window.addEventListener('resize', updateNavButtons);
+ 
+    scrollerEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { selectImage(Math.min(activeIndex + 1, images.length - 1)); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { selectImage(Math.max(activeIndex - 1, 0)); e.preventDefault(); }
+    });
+ 
+    idxTotal.textContent = images.length;
+    renderThumbs();
+    selectImage(0);
+    updateNavButtons();
+ 
+    if (images.length <= 1) {
+      document.querySelector('#iscr-root .iscr-row-wrap').style.display = 'none';
+    }
+  })();
+  </script>
+ 
 </div>
+
+
 <section id="flip-phone-sticker" class="level1">
 <h1>Flip Phone Sticker</h1>
 <p><strong>$4.00</strong></p>
