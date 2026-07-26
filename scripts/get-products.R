@@ -140,7 +140,7 @@ generate_image_gallery <- function(id, handle) {
   )
   
   # save gallery
-  new_filepath <- paste0("_includes/image-scroller-", handle, ".html")
+  new_filepath <- paste0("_includes/product-galleries/image-scroller-", handle, ".html")
   writeLines(updated_image_scroller_html, new_filepath)
   
 }
@@ -172,7 +172,7 @@ generate_shopify_buttons <- function(id, handle) {
     gsub(pattern = '1780618864944', replacement = handle, x = ., fixed = TRUE) #replace component id
 
   
-  new_filepath <- paste0("_includes/add-button-", handle, ".html")
+  new_filepath <- paste0("_includes/buttons/add-to-cart/add-button-", handle, ".html")
   writeLines(updated_add_button_html, new_filepath)
   
   #buy buttons
@@ -183,7 +183,7 @@ generate_shopify_buttons <- function(id, handle) {
     gsub(pattern = '1780618864944', replacement = handle, x = ., fixed = TRUE) #replace component id
                                   
   
-  new_filepath <- paste0("_includes/buy-button-", handle, ".html")
+  new_filepath <- paste0("_includes/buttons/buy-now/buy-button-", handle, ".html")
   writeLines(updated_buy_button_html, new_filepath)
   
 }
@@ -410,7 +410,7 @@ all_review_forms <- function(id, handle) {
     gsub(pattern = 'SHOPIFY_PRODUCT_ID', replacement = id, x = ., fixed = TRUE) %>% #replace with real product id
     gsub(pattern = 'SHOPIFY_PRODUCT_HANDLE', replacement = handle, x = ., fixed = TRUE)
   
-  new_filepath <- paste0("_includes/review-form-", handle, ".html")
+  new_filepath <- paste0("_includes/review-forms/review-form-", handle, ".html")
   writeLines(specific_review_form, new_filepath)
   
 }
@@ -436,7 +436,7 @@ write_product_markdown <- function(id, handle, title, product_type, date, desc, 
   filepath <- file.path(output_dir, paste0(handle, ".md"))
   
   #adds add button to yaml for listings
-  add_button_html <- read_file(glue("_includes/add-button-{handle}.html"))
+  add_button_html <- read_file(glue("_includes/buttons/add-to-cart/add-button-{handle}.html"))
   indented_button <- paste0("  ", gsub("\n", "\n  ", add_button_html))
   
   
@@ -457,16 +457,16 @@ add-button: |
 {indented_button}
 ---
 
-{{{{< include ../_includes/image-scroller-{handle}.html >}}}}
+{{{{< include ../_includes/product-galleries/image-scroller-{handle}.html >}}}}
 
 # {title}
 **${price}**
 
 {desc}
 
-{{{{< include ../_includes/buy-button-{handle}.html >}}}}
+{{{{< include ../_includes/buttons/buy-now/buy-button-{handle}.html >}}}}
 
-{{{{< include ../_includes/add-button-{handle}.html >}}}}
+{{{{< include ../_includes/buttons/add-to-cart/add-button-{handle}.html >}}}}
 
 ---
 
@@ -477,16 +477,17 @@ add-button: |
 
 {{{{< include ../_includes/product-reviews/{id}.html >}}}}
 
+---
+
 </section>
 
----
 
 <section id="leave-a-review">
 
   <!-- ONLY this header will be centered -->
   <h1 style="text-align: center;">Leave a Review</h1>
 
-{{{{< include ../_includes/review-form-{handle}.html >}}}}
+{{{{< include ../_includes/review-forms/review-form-{handle}.html >}}}}
 
 </section>
 

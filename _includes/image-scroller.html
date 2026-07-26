@@ -206,7 +206,7 @@
         el.className = 'iscr-thumb' + (i === activeIndex ? ' active' : '');
         el.setAttribute('aria-label', `View image ${i + 1} of ${images.length}: ${img.label}`);
         if (i === activeIndex) el.setAttribute('aria-current', 'true');
-        el.innerHTML = `<img src="${img.src}" alt="" loading="lazy">`;
+        el.innerHTML = `<img src="${img.src}" alt="" loading="eager">`;
         el.addEventListener('click', () => selectImage(i));
         thumbRow.appendChild(el);
       });
