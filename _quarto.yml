@@ -18,9 +18,12 @@ website:
   favicon: assets/images/groovy-weirdo-icon.svg
   announcement:
     # icon: cone-striped
-    dismissable: true
-    content: "<div style='display: block; text-align: left;'><i class='bi bi-cone-striped' style='margin-right: 4px;'></i>This site is in development. [Report an issue](/feedback.html){target='_blank'}.</div><div style='display: block; text-align: left; margin-top: 4px;'><i class='bi bi-megaphone-fill' style='margin-right: 4px;'></i> Free shipping on orders over $15</div>"
-    position: above-navbar
+    # dismissable: true
+    # content: "<div style='display: block; text-align: left;'><i class='bi bi-cone-striped' style='margin-right: 4px;'></i>This site is in development. [Report an issue](/feedback.html){target='_blank'}.</div><div style='display: block; text-align: left; margin-top: 4px;'><i class='bi bi-megaphone-fill' style='margin-right: 4px;'></i> Free shipping on orders over $15</div>"
+    # position: above-navbar
+    icon: megaphone-fill
+    content: "Free shipping on orders over $15"
+    position: below-navbar
     type: secondary #options include primary, secondary, success, danger, warning, info, light, dark
     
   open-graph:
@@ -54,7 +57,8 @@ website:
     background: primary
     border: false
     left:
-      - icon: chat-square-text-fill
+      # - icon: chat-square-text-fill
+      - icon: bug-fill
         href: /feedback.html
         target: _blank
         aria-label: Feedback
