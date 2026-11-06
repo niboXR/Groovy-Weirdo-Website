@@ -31,6 +31,7 @@ a.navbar-brand.navbar-brand-logo{
 
 }
 
+
 /**********
 Navbar Font
 **********/
@@ -253,3 +254,208 @@ div.quarto-categories {
   vertical-align: bottom;
 }
 */
+
+
+/*********
+*REVIEWS*
+*********/
+
+#reviews {
+  max-width: 600px;
+}
+
+.rv-no-reviews {
+  color: #2A0876;
+}
+
+.rv-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: .67px solid #EF60b9;
+
+}
+
+.rv-summary-count {
+  font-size: 0.85rem;
+  color: #2A0876;
+}
+
+/*summary stars stuff*/
+
+.rv-star-row { /*The summary star row*/
+  display: flex;
+  gap: 12px;
+}
+
+.rv-summary .rv-star {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.rv-summary .rv-star svg {
+  width: 32px;
+  height: 32px;
+
+}
+
+.rv-review {
+  
+  /*OG
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-bottom: .67px solid #EF60b9;*/
+  
+  display: flex;
+  /* 1. Mobile-First: Stack vertically and reverse order so image sits on top */
+  flex-direction: column; 
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 1.5rem 0;
+  padding: 1.5rem 0;
+  border-bottom: .67px solid #EF60b9;
+  
+}
+
+/*Review Header stuff*/
+.rv-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*
+  flex-direction: column;
+  align-items: left;
+  gap: 0.6rem;
+  margin: 0 0 .35rem 0;
+  */
+}
+
+.rv-review-author {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2A0876;
+}
+
+.rv-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #2A0876;
+  background: #EF60b9;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.rv-verified-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.rv-star {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+}
+
+.rv-star svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.rv-star-outline path {
+  fill: none;
+  stroke: #2A0876;
+  stroke-width: 4px;
+}
+
+.rv-star-fill-clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--rv-fill);
+  overflow: hidden;
+}
+
+.rv-star-fill-svg path {
+  fill: #2A0876;
+}
+
+/*REVIEW BODY STUFF*/
+.rv-review-body {
+  /*OG
+  flex: 1;
+  min-width: 0; /* prevents long text from overflowing the flex item */
+  
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem; 
+  width: 100%;
+}
+
+.rv-review-content {
+  flex: 1;
+  min-width: 0; /* prevents long text from overflowing the flex item */
+  margin: 0;    /* Resets default paragraph margins */
+  
+}
+
+
+.rv-review-image {
+  display: block;
+  /*width: clamp(150px, 50vw, 300px);
+  height: clamp(150px, 50vw, 300px);*/
+  width: 300px;    /* Strict desktop/mobile width constraint */
+  height: 300px;   /* Strict desktop/mobile height constraint */  
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin: 0 auto; 
+}
+
+@media (max-width: 680px) {
+  .rv-review-body {
+  /*  flex-direction: column-reverse; /* Puts text on left, image back on the right */
+  /*  align-items: flex-start; /* Aligns them cleanly to the top of the row */
+  }
+  
+  .rv-review-image {
+    margin: 0; /* Reset mobile center margin to sit nicely on the right wall */
+    width: 150px;    /* Strict desktop/mobile width constraint */
+    height: 150px;   /* Strict desktop/mobile height constraint */  
+
+  }
+}
+
+/**************/
+/*REVIEW FORM*/
+/************/
+
+#leave-a-review {
+  max-width: 600px;
+}

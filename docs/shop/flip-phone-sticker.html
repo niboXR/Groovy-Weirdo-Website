@@ -88,14 +88,6 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="179da911d4424d28eaf98ba046fbd174" class="alert alert-secondary hidden"><div class="quarto-announcement-content">
-<div style="display: block; text-align: left;">
-<i class="bi bi-cone-striped" style="margin-right: 4px;"></i>This site is in development. <a href="..\feedback.html" target="_blank">Report an issue</a>.
-</div>
-<div style="display: block; text-align: left; margin-top: 4px;">
-<i class="bi bi-megaphone-fill" style="margin-right: 4px;"></i> Free shipping on orders over $15
-</div>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -131,6 +123,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <div id="quarto-announcement" data-announcement-id="9ce76430fcd936764339fd6ae3439c28" class="alert alert-secondary hidden"><i class="bi bi-megaphone-fill quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p>Free shipping on orders over $15</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
@@ -146,12 +141,278 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center" style="max-width: 600px; width: 100%;">
-<figure class="figure">
-<p><img src="https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Flip_Phone_Sticker_Product_Image.jpg?v=1782406076" class="align-left img-fluid figure-img"></p>
-<figcaption>Flip Phone Sticker</figcaption>
-</figure>
+<!--
+  Image Scroller — embeddable fragment
+  Paste this whole block wherever you want the scroller to appear in your page.
+  No <html>/<head>/<body>/<!DOCTYPE> here on purpose — this is meant to live
+  inside a page that already has those. (It also happens to render fine if you
+  open this file directly in a browser, since browsers auto-supply the missing
+  wrapper tags for standalone preview.)
+-->
+<div class="iscr" id="iscr-root">
+ 
+  <style>
+    /* Custom properties + box-sizing reset are scoped to .iscr so they can't
+       leak out and affect the rest of the host page. */
+    .iscr{
+      --iscr-bg: #16181c;
+      --iscr-panel: #EF60b9;
+      --iscr-accent: #2A0876;
+      --iscr-thumb-border: #A278FF; /* unselected thumbnail border — brand purple */
+      --iscr-thumb-border-active: #2A0876; /* selected thumbnail border — deeper indigo */
+      --iscr-nav-bg: rgba(42, 8, 118, 0.6); /* indigo, instead of plain black/gray */
+      --iscr-nav-hover-bg: #67def9; /* brand blue */
+      --iscr-nav-hover-text: #2A0876; /* dark text for contrast against the light hover blue */
+      --iscr-text: #eee9e1;
+      --iscr-muted: #8a8f98;
+      --iscr-thumb-gap: 14px;
+      --iscr-visible-thumbs: 4; /* change to 3 to fit three thumbnails per row instead */
+ 
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:18px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--iscr-text);
+    }
+    .iscr, .iscr *{ box-sizing:border-box; }
+ 
+    .iscr .iscr-stage{
+      width:600px;
+      max-width:90vw;
+      aspect-ratio: 4 / 3; /* matches 600x450 source images */
+      border-radius:12px;
+      overflow:hidden;
+      background:var(--iscr-panel);
+      position:relative;
+      box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    }
+    .iscr .iscr-stage img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      opacity:0;
+      animation:iscrFadeIn .35s forwards;
+    }
+    @keyframes iscrFadeIn{ to { opacity:1; } }
+ 
+    .iscr .iscr-caption{
+      /* Visually hidden but still present for screen readers: the aria-live
+         region here announces "now viewing image X of Y: label" whenever
+         the selection changes, without showing redundant text on-screen. */
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0, 0, 0, 0);
+      white-space:nowrap;
+      border:0;
+    }
+ 
+    .iscr .iscr-row-wrap{
+      width:600px;
+      max-width:90vw;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .iscr .iscr-row{
+      flex:1 1 auto;
+      min-width:0;
+      display:flex;
+      gap:var(--iscr-thumb-gap);
+      overflow-x:auto;
+      padding:14px 2px 20px;
+      scroll-behavior:smooth;
+      scrollbar-width:thin;
+      scrollbar-color:var(--iscr-accent) transparent;
+      -webkit-overflow-scrolling:touch;
+      touch-action:pan-x;
+    }
+    .iscr .iscr-row::-webkit-scrollbar{ height:6px; }
+    .iscr .iscr-row::-webkit-scrollbar-thumb{ background:var(--iscr-accent); border-radius:3px; }
+    .iscr .iscr-row::-webkit-scrollbar-track{ background:transparent; }
+ 
+    .iscr .iscr-thumb{
+      flex:0 0 auto;
+      width:clamp(70px, calc((100% - (var(--iscr-visible-thumbs) - 1) * var(--iscr-thumb-gap)) / var(--iscr-visible-thumbs)), 150px);
+      aspect-ratio:4 / 3; /* matches 600x450 source images */
+      border-radius:8px;
+      overflow:hidden;
+      cursor:pointer;
+      border:2px solid var(--iscr-thumb-border);
+      opacity:.8;
+      padding:0;
+      font:inherit;
+      display:block;
+      transition: opacity .2s ease, border-color .2s ease, transform .2s ease;
+      background:var(--iscr-panel);
+    }
+    .iscr .iscr-thumb:focus-visible,
+    .iscr .iscr-nav-btn:focus-visible,
+    .iscr:focus-visible{
+      outline:2px solid var(--iscr-accent);
+      outline-offset:2px;
+    }
+    .iscr .iscr-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .iscr .iscr-thumb:hover{
+      opacity:.85;
+      transform:translateY(-2px);
+    }
+    .iscr .iscr-thumb.active{
+      opacity:1;
+      border-color:var(--iscr-thumb-border-active);
+    }
+ 
+    .iscr .iscr-nav-btn{
+      flex:0 0 auto;
+      width:32px;
+      height:32px;
+      border-radius:50%;
+      border:none;
+      background:var(--iscr-nav-bg);
+      color:var(--iscr-text);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:16px;
+      transition: background .2s ease, color .2s ease;
+    }
+    .iscr .iscr-nav-btn:hover{ background: var(--iscr-nav-hover-bg); color:var(--iscr-nav-hover-text); }
+    .iscr .iscr-nav-btn:disabled{
+      opacity:.25;
+      cursor:default;
+      background:var(--iscr-nav-bg);
+      color:var(--iscr-text);
+    }
+ 
+    @media (max-width: 640px){
+      /* Slightly larger tap targets on touch devices; no repositioning
+         needed since the buttons already live in their own flex space. */
+      .iscr .iscr-nav-btn{
+        width:38px;
+        height:38px;
+      }
+    }
+  </style>
+ 
+  <div class="iscr" role="group" aria-label="Image gallery" tabindex="0" id="iscr-scroller">
+    <div class="iscr-stage" id="iscr-stage">
+      <img id="iscr-mainImage" src="" alt="Selected image">
+    </div>
+ 
+    <div class="iscr-caption" aria-live="polite">
+      <span id="iscr-imgLabel">—</span>
+      <span class="iscr-count"><span id="iscr-idxNow">1</span> / <span id="iscr-idxTotal">1</span></span>
+    </div>
+ 
+    <div class="iscr-row-wrap">
+      <button class="iscr-nav-btn iscr-nav-prev" id="iscr-prevBtn" aria-label="Previous image">‹</button>
+      <div class="iscr-row" id="iscr-thumbRow" role="group" aria-label="Thumbnails"></div>
+      <button class="iscr-nav-btn iscr-nav-next" id="iscr-nextBtn" aria-label="Next image">›</button>
+    </div>
+  </div>
+ 
+  <script>
+  (function(){
+    // Replace this array with your own images: { src, label }
+    // src can be a URL, a relative path, or a data URI — anything a normal <img> accepts.
+    const images = [
+  {
+    "src": "https://cdn.shopify.com/s/files/1/0683/2521/2226/files/Flip_Phone_Sticker_Product_Image.jpg?v=1782406076",
+    "label": "Flip Phone Sticker"
+  }
+];
+ 
+    const stageImg = document.getElementById('iscr-mainImage');
+    const thumbRow = document.getElementById('iscr-thumbRow');
+    const idxNow = document.getElementById('iscr-idxNow');
+    const idxTotal = document.getElementById('iscr-idxTotal');
+    const imgLabel = document.getElementById('iscr-imgLabel');
+    const prevBtn = document.getElementById('iscr-prevBtn');
+    const nextBtn = document.getElementById('iscr-nextBtn');
+    const scrollerEl = document.getElementById('iscr-scroller');
+ 
+    let activeIndex = 0;
+ 
+    function renderThumbs(){
+      thumbRow.innerHTML = '';
+      images.forEach((img, i) => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'iscr-thumb' + (i === activeIndex ? ' active' : '');
+        el.setAttribute('aria-label', `View image ${i + 1} of ${images.length}: ${img.label}`);
+        if (i === activeIndex) el.setAttribute('aria-current', 'true');
+        el.innerHTML = `<img src="${img.src}" alt="" loading="eager">`;
+        el.addEventListener('click', () => selectImage(i));
+        thumbRow.appendChild(el);
+      });
+    }
+ 
+    function selectImage(i){
+      activeIndex = i;
+      stageImg.style.animation = 'none';
+      void stageImg.offsetWidth; // restart fade animation
+      stageImg.style.animation = 'iscrFadeIn .35s forwards';
+      stageImg.src = images[i].src;
+      stageImg.alt = images[i].label;
+      imgLabel.textContent = images[i].label;
+      idxNow.textContent = i + 1;
+ 
+      [...thumbRow.children].forEach((el, j) => {
+        const isActive = j === i;
+        el.classList.toggle('active', isActive);
+        if (isActive) el.setAttribute('aria-current', 'true');
+        else el.removeAttribute('aria-current');
+      });
+ 
+      const activeThumb = thumbRow.children[i];
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+ 
+      updateNavButtons();
+    }
+ 
+    function updateNavButtons(){
+      // Buttons step through images, so they're only disabled at the very first/last image.
+      prevBtn.disabled = activeIndex <= 0;
+      nextBtn.disabled = activeIndex >= images.length - 1;
+    }
+ 
+    prevBtn.addEventListener('click', () => selectImage(Math.max(activeIndex - 1, 0)));
+    nextBtn.addEventListener('click', () => selectImage(Math.min(activeIndex + 1, images.length - 1)));
+    window.addEventListener('resize', updateNavButtons);
+ 
+    scrollerEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { selectImage(Math.min(activeIndex + 1, images.length - 1)); e.preventDefault(); }
+      if (e.key === 'ArrowLeft') { selectImage(Math.max(activeIndex - 1, 0)); e.preventDefault(); }
+    });
+ 
+    idxTotal.textContent = images.length;
+    renderThumbs();
+    selectImage(0);
+    updateNavButtons();
+ 
+    if (images.length <= 1) {
+      document.querySelector('#iscr-root .iscr-row-wrap').style.display = 'none';
+    }
+  })();
+  </script>
+ 
 </div>
+
+
 <section id="flip-phone-sticker" class="level1">
 <h1>Flip Phone Sticker</h1>
 <p><strong>$4.00</strong></p>
@@ -808,10 +1069,401 @@ The sticker is approximately 1.5 x 4 inches.
 })();
 /*]]>*/
 </script>
+<hr>
+<section id="reviews">
+<!-- ONLY this header will be centered -->
+<h1 style="text-align: center;">
+Reviews
+</h1>
+<p class="rv-no-reviews">This product does not have any reviews yet. Be the first to leave a review.</p>
+<hr>
 </section>
-<section id="reviews" class="level1">
-<h1>Reviews</h1>
-<p>This product does not have any reviews yet. Come back later to see reviews from verified buyers.</p>
+<section id="leave-a-review">
+<!-- ONLY this header will be centered -->
+<h1 style="text-align: center;">
+Leave a Review
+</h1>
+<form id="reviewForm" class="review-form" action="https://script.google.com/macros/s/AKfycbyGrGcxBOX71yAuD6YLKx4I_JPvKQuiE2zYt0v9N4zp2lmJC6xqA-c_N6TFD98LwDJ61A/exec" method="POST">
+  
+  <!-- HIDDEN FIELDS -->
+  <!-- Tracks which product the review belongs to -->
+  <input type="hidden" name="productId" value="8254624301122">
+  <input type="hidden" name="productHandle" value="flip-phone-sticker">
+  
+  <!--Timestamp -->
+  <input type="hidden" id="submittedAt" name="submittedAt" value="">
+  
+  <!-- help prevent bots and scripts from posting reviews -->
+  <input type="hidden" name="secretToken" value="MySuperSecretPassword123"> 
+  
+  <!-- PUBLIC FIELDS -->
+
+  <!-- Rating Scale -->
+  <div class="form-group" style="display: flex; justify-content: center; align-items: center;">
+    <div class="rating-header">
+      <label id="ratingLabel">Your rating</label>
+    </div>
+    <div class="star-rating" role="radiogroup" aria-labelledby="ratingLabel">
+      <button type="button" class="star" data-value="1" role="radio" aria-label="1 star">
+        <svg viewbox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>        </svg>
+      </button>
+      <button type="button" class="star" data-value="2" role="radio" aria-label="2 stars">
+        <svg viewbox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>        </svg>
+      </button>
+      <button type="button" class="star" data-value="3" role="radio" aria-label="3 stars">
+        <svg viewbox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>        </svg>
+      </button>
+      <button type="button" class="star" data-value="4" role="radio" aria-label="4 stars">
+        <svg viewbox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>        </svg>
+      </button>
+      <button type="button" class="star" data-value="5" role="radio" aria-label="5 stars">
+        <svg viewbox="0 0 83.77 83.07" class="star-icon">
+          <path class="star-fill" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>
+          <path class="star-border" d="M60.24,79.8l-17.23-17.74c-.22-.22-.57-.18-.75.06l-14.4,20.11c-1.21,1.71-3.91.64-3.63-1.43l3.12-24.53c.04-.29-.2-.57-.51-.55l-24.7,1.28c-2.09.11-2.94-2.64-1.16-3.74l21.14-12.86c.26-.17.31-.51.11-.73L5.81,21.14c-1.39-1.56.24-3.95,2.2-3.23l23.23,8.5c.29.11.61-.07.64-.37L36.15,1.67c.37-2.06,3.23-2.28,3.91-.29l7.84,23.47c.09.29.42.42.7.28l21.71-11.87c1.84-1.01,3.8,1.1,2.66,2.86l-13.45,20.75c-.17.26-.06.61.22.72l22.81,9.56c1.93.81,1.5,3.67-.59,3.87l-24.63,2.42c-.31.04-.51.33-.42.62l6.73,23.8c.57,2.02-1.93,3.45-3.39,1.96v-.02Z"></path>        </svg>
+      </button>      
+
+  </div>
+    <!-- Hidden input so this still submits like a form field -->
+    <input type="hidden" id="ratingRange" name="rating" value="5">
+  </div>
+
+  <!-- Reviewer Info -->
+  <div class="form-group">
+    <label for="reviewerName">Display name</label>
+    <input type="text" id="reviewerName" name="reviewerName" placeholder="e.g., Jane Doe" required="">
+  </div>
+  
+  <div class="form-group">
+    <label for="reviewerEmail">Email address</label>
+    <input type="text" id="reviewerEmail" name="reviewerEmail" placeholder="e.g., janedoe@gmail.com" required="">
+    <small class="file-help">IMPORTANT! This should be the email you used on your order so that we can verify your review.</small>
+  
+  </div>
+  
+  <!-- Review Text -->
+  <div class="form-group">
+    <label for="reviewContent">Review</label>
+    <textarea id="reviewContent" name="reviewContent" rows="5" placeholder="What did you like or dislike?"></textarea>
+  </div>
+  
+  
+  
+  <!-- Image Upload -->
+  <div class="form-group" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;">
+    <label for="reviewImage">Upload a Photo (Optional)</label>
+  
+    <input type="file" id="reviewImage" name="reviewImage" accept="image/*" class="visually-hidden">
+  
+    <label for="reviewImage" class="upload-square-btn" aria-label="Upload a photo">
+      <i class="bi bi-upload"></i>
+      <span class="upload-check" id="uploadCheck">
+        <i class="bi bi-check"></i>
+      </span>
+    </label>
+  
+    <small class="file-help" id="fileHelp">JPG, PNG, or WebP files allowed.</small>
+  </div>
+  
+  <style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+  
+    .upload-square-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: transparent;
+      border: 2px solid #2A0876;
+      color: #2A0876;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+  
+    .upload-square-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15)
+    }
+  
+    .upload-square-btn i {
+      font-size: 24px;
+    }
+  
+    .upload-check {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #2A0876;
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .upload-check.visible {
+      display: flex;
+    }
+  
+    .upload-check i {
+      font-size: 12px;
+    }
+  
+    #reviewImage:focus-visible + .upload-square-btn {
+      outline: 2px solid #2A0876;
+      outline-offset: 3px;
+    }
+  </style>
+  
+  <script>
+    document.getElementById('reviewImage').addEventListener('change', function() {
+      const check = document.getElementById('uploadCheck');
+      const help = document.getElementById('fileHelp');
+      if (this.files && this.files[0]) {
+        check.classList.add('visible');
+        help.textContent = this.files[0].name + ' was uploaded';
+      } else {
+        check.classList.remove('visible');
+        help.textContent = 'JPG, PNG, or WebP files allowed.';
+      }
+    });
+  </script>  
+  
+  <!-- Submit Button -->
+  <button type="submit" id="submitBtn" class="submit-button">Submit Review</button>
+  
+  <!-- Status Messages -->
+  <div id="formStatus" class="form-status" aria-live="polite"></div>
+</form>
+
+<script>
+const starRating = document.querySelector('.star-rating');
+const stars = document.querySelectorAll('.star');
+const ratingInput = document.getElementById('ratingRange');
+const ratingOutput = document.getElementById('ratingOutput');
+const reviewForm = document.getElementById('reviewForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+
+// 1. Update the rating stars display dynamically
+
+function paint(value) {
+  stars.forEach(star => {
+    star.classList.toggle('filled', Number(star.dataset.value) <= value);
+  });
+}
+
+function setRating(value) {
+  ratingInput.value = value;
+  //ratingOutput.textContent = `${value} / 5 Stars`;
+  stars.forEach(star => {
+    star.setAttribute('aria-checked', Number(star.dataset.value) === value);
+  });
+  paint(value);
+}
+
+stars.forEach(star => {
+  star.addEventListener('click', () => setRating(Number(star.dataset.value)));
+  star.addEventListener('mouseenter', () => paint(Number(star.dataset.value)));
+});
+
+// Revert to the committed rating once the mouse leaves the whole group
+starRating.addEventListener('mouseleave', () => paint(Number(ratingInput.value)));
+
+// Initialize on load
+setRating(Number(ratingInput.value));
+
+
+// 2. Handle the image upload
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// 3. Handle the form submission in the background
+reviewForm.addEventListener('submit', async (e) => {   // <-- added "async" here
+  e.preventDefault(); // Prevents the page from hanging/redirecting
+ 
+  // Timestamp
+  document.getElementById('submittedAt').value = new Date().toISOString();
+ 
+  // Grab the selected file (if any)
+  const fileInput = document.getElementById('reviewImage');
+  const file = fileInput.files[0];   // <-- this line was missing
+ 
+  // Image validation
+  const MAX_SIZE = 5 * 1024 * 1024; // 5MB
+  const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+ 
+  if (file) {
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      formStatus.textContent = "Please upload a JPG, PNG, or WebP image.";
+      formStatus.className = "form-status error";
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      formStatus.textContent = "Image is too large. Please choose one under 5MB.";
+      formStatus.className = "form-status error";
+      return;
+    }
+  }
+ 
+  // On submission, disable button and show loading text
+  submitBtn.disabled = true;
+  formStatus.textContent = "Submitting your review...";
+  formStatus.className = "form-status";
+ 
+  // Build the payload manually — field names here must match
+  // what your Apps Script reads on the other side
+  const payload = {
+    productId: reviewForm.productId.value,
+    productHandle: reviewForm.productHandle.value,
+    submittedAt: reviewForm.submittedAt.value,
+    secretToken: reviewForm.secretToken.value,
+    rating: reviewForm.rating.value,
+    reviewerName: reviewForm.reviewerName.value,
+    reviewerEmail: reviewForm.reviewerEmail.value,
+    reviewContent: reviewForm.reviewContent.value
+  };
+ 
+  if (file) {
+    payload.fileData = await fileToBase64(file);
+    payload.fileName = file.name;
+    payload.fileType = file.type;
+  }
+ 
+  // Send data to your Google Apps Script URL as JSON
+  fetch(reviewForm.action, {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    headers: {
+      'Content-Type': 'text/plain'   // avoids a CORS preflight Apps Script can't handle
+    },
+    mode: 'cors'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.result === 'success') {
+      formStatus.textContent = "Thank you! Your review has been submitted and will be posted after it is verified.";
+      formStatus.className = "form-status success";
+      reviewForm.reset();
+      setRating(5);
+    } else {
+      throw new Error(data.error);
+    }
+  })
+  .catch(error => {
+    formStatus.textContent = "Oops! Something went wrong. Please try again.";
+    formStatus.className = "form-status error";
+    console.error('Submission Error:', error);
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+  });
+});
+
+
+</script>
+
+<style>
+.review-form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; }
+.form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+.rating-header { display: flex; justify-content: space-between; align-items: center; }
+.submit-button { cursor: pointer; padding: 0.75rem; background: #60264a; color: white; border: none; border-radius: 4px; }
+.submit-button:disabled { 
+    background: #c490b2;  /* muted purple */
+    color: #3d1a30;
+    cursor: not-allowed; 
+    opacity: 1;
+  }
+.form-status { font-size: 0.875rem; margin-top: 0.5rem; font-weight: 500; }
+.form-status.success { color: #2A0876; }
+.form-status.error { color: #8f3a6f; }
+.file-help { font-size: 0.75rem; color: #8f3a6f; }
+
+
+input[type="text"],
+textarea {
+  border: 1.5px solid #2A0876;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #8f3a6f;
+  box-shadow: 0 0 0 3px rgba(42, 8, 118, 0.15);
+}
+
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #9b8ab0;
+}
+
+.star-rating {
+  display: flex;
+  gap: 4px;
+}
+.star {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.star-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.star-icon .star-fill {
+  fill: #d4cee4;
+}
+
+.star-icon .star-border {
+  fill: none;
+  stroke: #2A0876;
+  stroke-width: 3;
+}
+
+.star.filled .star-icon .star-fill {
+  fill: #2A0876;
+}
+
+.star:hover .star-icon .star-fill {
+  fill: #2A0876;
+}
+
+</style>
+</section>
 <hr>
 <p><a href="../shop.html">Back to shop</a></p>
 
@@ -1226,7 +1878,7 @@ The sticker is approximately 1.5 x 4 inches.
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="../feedback.html" target="_blank">
-      <i class="bi bi-chat-square-text-fill" role="img" aria-label="Feedback">
+      <i class="bi bi-bug-fill" role="img" aria-label="Feedback">
 </i> 
     </a>
   </li>  
